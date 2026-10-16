@@ -1,0 +1,47 @@
+name: release
+
+# Publishes to PyPI with Trusted Publishing (OIDC; no API token is stored anywhere) and PEP 740
+# build attestations. Runs only when a version tag is pushed. The PyPI project must first list
+# this repository + workflow + environment as a trusted publisher.
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v6
+      - name: tag matches package version
+        run: |
+          v=$(uv run --no-project python -c "import tomllib;print(tomllib.load(open('pyproject.toml','rb'))['project']['version'])")
+          test "v$v" = "${GITHUB_REF_NAME}"
+      - run: uv build
+      - name: smoke-test the wheel
+        run: |
+          uv run --isolated --no-project --with dist/*.whl mcp-defense-bench verify
+          uv run --isolated --no-project --with dist/*.whl mcp-defense-bench run mcp_defense_bench.adapters.null:NullBaseline -q
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/project/mcp-defense-bench/
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@release/v1

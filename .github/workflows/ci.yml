@@ -1,0 +1,49 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --group fastmcp --locked
+      - run: uv run ruff check src tests scripts examples
+      - run: uv run ruff format --check src tests scripts examples
+      - run: uv run mypy
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+        extras: [core, fastmcp]
+    steps:
+      - uses: actions/checkout@v5
+      # The pinned bench commit, for the held-out hash-and-count check (nothing is scored on it).
+      - uses: actions/checkout@v5
+        with:
+          repository: Gowthaman90/mcp-defense-bench
+          ref: c4a4863ba677f42b78660dbfb61f7a058373c932
+          path: _bench-checkout
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: ${{ matrix.python }}
+      - name: test (core, no optional dependencies)
+        if: matrix.extras == 'core'
+        run: uv run --isolated --no-default-groups --with pytest pytest
+        env:
+          MCP_DEFENSE_BENCH_PATH: _bench-checkout
+      - name: test (with fastmcp)
+        if: matrix.extras == 'fastmcp'
+        run: uv run --group fastmcp pytest
+        env:
+          MCP_DEFENSE_BENCH_PATH: _bench-checkout

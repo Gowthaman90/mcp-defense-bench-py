@@ -1,0 +1,91 @@
+[project]
+name = "mcp-defense-bench"
+version = "0.1.0"
+description = "Score Python MCP defences on the mcp-defense-bench corpus, with the same metrics as the JS leaderboard."
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+authors = [
+    { name = "Gowthaman Arumugam", email = "agowthaman90@gmail.com" }
+]
+requires-python = ">=3.10"
+dependencies = []
+keywords = ["mcp", "model-context-protocol", "security", "benchmark", "fastmcp", "pytest", "llm-agents"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Framework :: Pytest",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Security",
+    "Topic :: Software Development :: Testing",
+    "Typing :: Typed",
+]
+
+[project.optional-dependencies]
+fastmcp = ["fastmcp>=4.0,<5"]
+pytest = ["pytest>=8.0"]
+
+[project.urls]
+Homepage = "https://github.com/Gowthaman90/mcp-defense-bench-py"
+Repository = "https://github.com/Gowthaman90/mcp-defense-bench-py"
+Issues = "https://github.com/Gowthaman90/mcp-defense-bench-py/issues"
+Changelog = "https://github.com/Gowthaman90/mcp-defense-bench-py/blob/main/CHANGELOG.md"
+Benchmark = "https://github.com/Gowthaman90/mcp-defense-bench"
+
+[project.scripts]
+mcp-defense-bench = "mcp_defense_bench.cli:main"
+
+[project.entry-points.pytest11]
+mcp_defense = "mcp_defense_bench.pytest_plugin"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.13",
+    "mypy>=1.18",
+]
+fastmcp = ["fastmcp>=4.0,<5"]
+
+[build-system]
+requires = ["uv_build>=0.11.31,<0.12.0"]
+build-backend = "uv_build"
+
+[tool.uv]
+default-groups = ["dev"]
+
+[tool.ruff]
+line-length = 130
+target-version = "py310"
+extend-exclude = ["src/mcp_defense_bench/_bench"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "S", "RUF", "SIM", "PT"]
+ignore = ["S101", "S603", "S607", "RUF001", "RUF003"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S", "PT018", "RUF012", "PT011", "E501"]
+
+[tool.mypy]
+strict = true
+python_version = "3.10"
+files = ["src/mcp_defense_bench"]
+
+[[tool.mypy.overrides]]
+module = ["fastmcp.*", "mcp.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+pythonpath = ["."]
+
+[tool.uv.build-backend]
+source-include = ["tests/**", "examples/**", "scripts/**", "CHANGELOG.md", "SECURITY.md", "CITATION.cff"]

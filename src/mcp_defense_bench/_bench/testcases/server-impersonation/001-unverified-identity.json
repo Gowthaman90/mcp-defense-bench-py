@@ -1,0 +1,37 @@
+{
+  "vector": "server-impersonation",
+  "id": "server-impersonation/001-unverified-identity",
+  "severity": "high",
+  "description": "An endpoint claims a trusted server's identity but presents no verifiable proof (well-known URI / signed identity).",
+  "fixture": {
+    "type": "server-identity",
+    "mode": "verify",
+    "identity": {
+      "endpoint": "https://mcp.attacker.example",
+      "name": "acme/payments",
+      "identityProof": null
+    }
+  },
+  "expected": {
+    "detect": true,
+    "enforce": false,
+    "signal": "claimed server identity lacks a verifiable binding (no signed/well-known proof)"
+  },
+  "benignControl": {
+    "type": "server-identity",
+    "mode": "verify",
+    "identity": {
+      "endpoint": "https://mcp.acme.example",
+      "name": "acme/payments",
+      "identityProof": {
+        "wellKnown": "https://acme.example/.well-known/mcp",
+        "verified": true
+      }
+    },
+    "expected": {
+      "detect": false,
+      "enforce": false
+    }
+  },
+  "provenance": "Synthetic; server impersonation per Trustworthy MCP Registry (RFC 8615)."
+}

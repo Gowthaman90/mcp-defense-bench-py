@@ -1,0 +1,6 @@
+mcp-defense-bench (Python)
+Copyright 2026 Gowthaman Arumugam
+
+This package vendors the rubric and the development and benign corpora of mcp-defense-bench
+(https://github.com/Gowthaman90/mcp-defense-bench, Apache-2.0, same author) at commit
+c4a4863ba677f42b78660dbfb61f7a058373c932, under src/mcp_defense_bench/_bench/.

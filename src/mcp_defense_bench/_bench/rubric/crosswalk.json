@@ -1,0 +1,1975 @@
+{
+  "$schema": "./rubric.schema.json",
+  "artifact": "MCP Threat–Control Crosswalk (rubric)",
+  "version": "0.9.0",
+  "date": "2026-10-16",
+  "license": "CC-BY-4.0",
+  "description": "Vendor-neutral rubric: MCP attack vectors mapped to architectural layer, STRIDE, NIST AI RMF, OWASP LLM 2025, OWASP Agentic 2026, NSA MCP Security guidance, EU AI Act obligations (Arts. 12/14/15/26/55/72/73) and ISO/IEC 42001 Annex A controls (May 2026). Per-tool coverage lives in adapters/*, NOT here, so the rubric stays neutral.",
+  "_frameworks": {
+    "mcpLayer": [
+      "host-orchestration",
+      "client",
+      "transport",
+      "server",
+      "tool",
+      "registry-supply-chain"
+    ],
+    "stride": [
+      "Spoofing",
+      "Tampering",
+      "Repudiation",
+      "InformationDisclosure",
+      "DenialOfService",
+      "ElevationOfPrivilege"
+    ],
+    "nistAiRmf": [
+      "GOVERN",
+      "MAP",
+      "MEASURE",
+      "MANAGE"
+    ],
+    "owaspLlm2025": {
+      "LLM01": "Prompt Injection",
+      "LLM02": "Sensitive Information Disclosure",
+      "LLM03": "Supply Chain",
+      "LLM04": "Data and Model Poisoning",
+      "LLM05": "Improper Output Handling",
+      "LLM06": "Excessive Agency",
+      "LLM07": "System Prompt Leakage",
+      "LLM08": "Vector and Embedding Weaknesses",
+      "LLM09": "Misinformation",
+      "LLM10": "Unbounded Consumption"
+    },
+    "owaspAgentic2026": {
+      "ASI01": "Agent Goal Hijack",
+      "ASI02": "Tool Misuse and Exploitation",
+      "ASI03": "Identity and Privilege Abuse",
+      "ASI04": "Agentic Supply Chain Vulnerabilities",
+      "ASI05": "Unexpected Code Execution (RCE)",
+      "ASI06": "Memory & Context Poisoning",
+      "ASI07": "Insecure Inter-Agent Communication",
+      "ASI08": "Cascading Failures",
+      "ASI09": "Human-Agent Trust Exploitation",
+      "ASI10": "Rogue Agents"
+    },
+    "nsaGuidance": {
+      "AUTH": "Authentication & Access Control (verify every session; least-privilege tokens per action/tool; signed provenance for discovered servers)",
+      "LOG": "Monitoring & Logging (log all tool/model invocations with parameters, identities, and result hashes)",
+      "SEG": "Data Classification & Segmentation (align tools/models to data-classification zones)",
+      "RT": "Runtime Controls (egress-filtering proxy, DLP, sandboxing, message integrity, output filtering, local MCP scans)"
+    },
+    "euAiAct": {
+      "_scope": "Regulation (EU) 2024/1689. Articles 9–15 bind PROVIDERS of high-risk AI systems (Annex III), Art. 26 binds DEPLOYERS of high-risk systems, Arts. 53/55 bind providers of general-purpose AI models (GPAI obligations enforceable since 2026-08-02). An MCP deployment engages these only when the surrounding AI system is in scope; the mapping says which obligation a vector's defence serves, not that every MCP deployment is regulated.",
+      "Art.12": "Record-keeping — automatic logging of events over the system's lifetime (traceability)",
+      "Art.14": "Human oversight — measures enabling natural persons to oversee, understand, and intervene",
+      "Art.15(5)": "Accuracy, robustness and cybersecurity — resilience against unauthorised third parties altering use, outputs or performance by exploiting vulnerabilities (incl. data/model poisoning, adversarial examples, confidentiality attacks)",
+      "Art.26": "Obligations of deployers of high-risk AI systems — use per instructions, assign human oversight, monitor operation, keep logs",
+      "Art.55(1)(d)": "GPAI with systemic risk — ensure an adequate level of cybersecurity protection for the model and its physical infrastructure",
+      "Art.72": "Post-market monitoring — actively and systematically collect and analyse performance data over the lifetime",
+      "Art.73": "Reporting of serious incidents — track, document and report incidents and corrective measures"
+    },
+    "iso42001": {
+      "_scope": "ISO/IEC 42001:2023 Annex A reference controls (AI management system). Control titles per the standard; an organisation selects controls via its Statement of Applicability, so these are the controls a vector's defence would evidence.",
+      "A.4.4": "Tooling resources — document the tools and resources used by the AI system",
+      "A.6.2.4": "AI system verification and validation",
+      "A.6.2.5": "AI system deployment — deployment requirements incl. security configuration",
+      "A.6.2.6": "AI system operation and monitoring",
+      "A.6.2.8": "AI system recording of event logs",
+      "A.7.5": "Data provenance — provenance of data used by the AI system",
+      "A.8.4": "Communication of incidents",
+      "A.9.2": "Processes for responsible use of AI systems",
+      "A.10.3": "Suppliers — manage risks from third-party suppliers of components and services"
+    }
+  },
+  "_todo": [
+    "DONE 2026-07-13: OWASP Agentic ASI01–ASI10 official titles confirmed against the OWASP GenAI Security Project 2026 release.",
+    "Add NIST AI RMF subcategory IDs (e.g. MEASURE 2.7) where confident; currently function-level only.",
+    "DONE 2026-07-13: second-reviewer pass on all 22 owaspLlm2025 mappings — 20 confirmed, 2 corrected (indirect-retrieval-injection LLM08→LLM01; false-error-escalation +LLM01).",
+    "Populate priorArtCoverage per-benchmark once MSB/MCPTox/AgentDefense-Bench vector lists are reconciled to these IDs.",
+    "2026-09-05: second-rater agreement pass over the 24 original vectors (rubric/RATING-CODEBOOK.md, bin/agreement.mjs). The 8 promoted 2026-07-28 vectors are single-rater until Rater C exists.",
+    "2026-09-05: adjudicated 62 A/B disagreements (rubric/ratings/ADJUDICATION.md): 12 mappings changed, codebook GOVERN rule clarified.",
+    "2026-09-08: euAiAct + iso42001 columns added (v0.8.0). SINGLE-RATER (author) — decision rules in rubric/RATING-CODEBOOK.md v1.2; second-rater pass not yet run for these two dimensions."
+  ],
+  "vectors": [
+    {
+      "id": "tool-poisoning",
+      "name": "Tool poisoning",
+      "aliases": [
+        "malicious tool description",
+        "instruction injection via metadata"
+      ],
+      "description": "Malicious instructions embedded in a tool's name/description/schema metadata that the model reads as trusted context. The dominant, most-impactful client-side MCP vulnerability.",
+      "mcpLayer": [
+        "tool",
+        "client"
+      ],
+      "stride": [
+        "Tampering",
+        "ElevationOfPrivilege"
+      ],
+      "nistAiRmf": [
+        "MAP",
+        "MEASURE",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM01",
+        "LLM06"
+      ],
+      "owaspAgentic2026": [
+        "ASI01",
+        "ASI02"
+      ],
+      "priorArtCoverage": [
+        "MSB",
+        "MCPTox",
+        "AgentDefense-Bench",
+        "MCP-Scan"
+      ],
+      "nsaGuidance": [
+        "RT",
+        "AUTH"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "euAiAct": [
+        "Art.15(5)"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.4.4",
+        "A.10.3"
+      ]
+    },
+    {
+      "id": "tool-shadowing",
+      "name": "Tool name collision / shadowing",
+      "aliases": [
+        "name squatting",
+        "tool override"
+      ],
+      "description": "A malicious server exposes a tool whose name collides with a trusted tool, so the agent may route calls to the attacker's implementation.",
+      "mcpLayer": [
+        "client",
+        "tool"
+      ],
+      "stride": [
+        "Spoofing",
+        "Tampering"
+      ],
+      "nistAiRmf": [
+        "MAP",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM01",
+        "LLM03"
+      ],
+      "owaspAgentic2026": [
+        "ASI01",
+        "ASI04"
+      ],
+      "priorArtCoverage": [
+        "MSB",
+        "AgentDefense-Bench",
+        "MCP-Scan"
+      ],
+      "nsaGuidance": [
+        "AUTH",
+        "RT"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "euAiAct": [
+        "Art.15(5)"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.4.4",
+        "A.10.3"
+      ]
+    },
+    {
+      "id": "rug-pull",
+      "name": "Rug pull / dynamic capability mutation",
+      "aliases": [
+        "definition mutation after trust",
+        "TOCTOU on tool def"
+      ],
+      "description": "A tool definition changes after it has been approved/trusted, swapping benign behavior for malicious. Time-of-check/time-of-use on the tool schema.",
+      "mcpLayer": [
+        "tool",
+        "registry-supply-chain"
+      ],
+      "stride": [
+        "Tampering"
+      ],
+      "nistAiRmf": [
+        "MEASURE",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM03",
+        "LLM06"
+      ],
+      "owaspAgentic2026": [
+        "ASI04"
+      ],
+      "priorArtCoverage": [
+        "MSB",
+        "AgentDefense-Bench"
+      ],
+      "nsaGuidance": [
+        "AUTH",
+        "RT"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "revisionNotes": "Unchanged as a mechanism, but 2026-07-28 adds a suppression path: a cached tools/list (ttlMs/cacheScope) can hide the definition change that pinning detects. See staged vector list-cache-poisoning.",
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.14",
+        "Art.55(1)(d)",
+        "Art.72"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.4.4",
+        "A.10.3"
+      ]
+    },
+    {
+      "id": "out-of-scope-params",
+      "name": "Out-of-scope parameter injection",
+      "aliases": [
+        "parameter expansion",
+        "argument smuggling"
+      ],
+      "description": "Tool invoked with parameters beyond its declared schema, or values that widen its effect past intended scope.",
+      "mcpLayer": [
+        "server",
+        "tool"
+      ],
+      "stride": [
+        "Tampering",
+        "ElevationOfPrivilege"
+      ],
+      "nistAiRmf": [
+        "MEASURE",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM05",
+        "LLM06"
+      ],
+      "owaspAgentic2026": [
+        "ASI02"
+      ],
+      "priorArtCoverage": [
+        "MSB",
+        "AgentDefense-Bench"
+      ],
+      "nsaGuidance": [
+        "RT",
+        "AUTH"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "revisionNotes": "As for schema-bypass: undeclared or malformed parameters can now also surface as Mcp-Param-* headers.",
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.55(1)(d)"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.6.2.4",
+        "A.9.2"
+      ]
+    },
+    {
+      "id": "response-injection",
+      "name": "Prompt injection via tool results",
+      "aliases": [
+        "response-handling injection",
+        "output injection"
+      ],
+      "description": "Attacker-controlled content in a tool's *return value* injects instructions the agent then acts on during response handling.",
+      "mcpLayer": [
+        "tool",
+        "client"
+      ],
+      "stride": [
+        "Tampering",
+        "ElevationOfPrivilege"
+      ],
+      "nistAiRmf": [
+        "MEASURE",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM01",
+        "LLM05"
+      ],
+      "owaspAgentic2026": [
+        "ASI01"
+      ],
+      "priorArtCoverage": [
+        "MSB",
+        "MCP-Scan",
+        "AgentDefense-Bench"
+      ],
+      "nsaGuidance": [
+        "RT"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "euAiAct": [
+        "Art.15(5)"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.7.5",
+        "A.10.3"
+      ]
+    },
+    {
+      "id": "indirect-retrieval-injection",
+      "name": "Indirect / retrieval injection",
+      "aliases": [
+        "RAG injection",
+        "document-borne injection"
+      ],
+      "description": "A tool fetches external content (web page, doc, record) that carries an embedded payload, injecting indirectly without the attacker touching the tool definition.",
+      "mcpLayer": [
+        "tool",
+        "server"
+      ],
+      "stride": [
+        "Tampering"
+      ],
+      "nistAiRmf": [
+        "MEASURE",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM01",
+        "LLM08"
+      ],
+      "owaspAgentic2026": [
+        "ASI01"
+      ],
+      "priorArtCoverage": [
+        "MSB",
+        "AgentDefense-Bench"
+      ],
+      "nsaGuidance": [
+        "RT"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.55(1)(d)"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.7.5"
+      ]
+    },
+    {
+      "id": "cross-tool-exfiltration",
+      "name": "Cross-tool data exfiltration / confused deputy",
+      "aliases": [
+        "confused deputy",
+        "data siphoning across tools"
+      ],
+      "description": "Sensitive data obtained via one (trusted) tool is exfiltrated through another tool/channel; the agent is the confused deputy.",
+      "mcpLayer": [
+        "client",
+        "host-orchestration"
+      ],
+      "stride": [
+        "InformationDisclosure",
+        "ElevationOfPrivilege"
+      ],
+      "nistAiRmf": [
+        "MAP",
+        "MEASURE",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM02",
+        "LLM06"
+      ],
+      "owaspAgentic2026": [
+        "ASI02",
+        "ASI03"
+      ],
+      "priorArtCoverage": [
+        "MSB",
+        "AgentDefense-Bench"
+      ],
+      "nsaGuidance": [
+        "RT",
+        "SEG"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.73"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.8.4"
+      ]
+    },
+    {
+      "id": "tool-transfer",
+      "name": "Tool-transfer / cross-server chaining",
+      "aliases": [
+        "cross-server attack chaining"
+      ],
+      "description": "An attack staged on one server manipulates the agent into acting on another server, chaining privileges across trust boundaries.",
+      "mcpLayer": [
+        "host-orchestration",
+        "client"
+      ],
+      "stride": [
+        "ElevationOfPrivilege"
+      ],
+      "nistAiRmf": [
+        "MAP",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM06"
+      ],
+      "owaspAgentic2026": [
+        "ASI02",
+        "ASI03"
+      ],
+      "priorArtCoverage": [
+        "MSB"
+      ],
+      "nsaGuidance": [
+        "AUTH",
+        "SEG",
+        "RT"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.73"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.10.3",
+        "A.8.4"
+      ]
+    },
+    {
+      "id": "false-error-escalation",
+      "name": "False-error escalation",
+      "aliases": [
+        "fake failure retry",
+        "error-driven privilege bait"
+      ],
+      "description": "A tool returns fabricated errors to bait the agent into retrying with broader permissions or an alternate, attacker-preferred path.",
+      "mcpLayer": [
+        "tool",
+        "client"
+      ],
+      "stride": [
+        "ElevationOfPrivilege",
+        "DenialOfService"
+      ],
+      "nistAiRmf": [
+        "MEASURE",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM01",
+        "LLM06"
+      ],
+      "owaspAgentic2026": [
+        "ASI01",
+        "ASI02"
+      ],
+      "priorArtCoverage": [
+        "MSB"
+      ],
+      "nsaGuidance": [
+        "RT",
+        "LOG"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.12",
+        "Art.14"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.6.2.8",
+        "A.10.3"
+      ]
+    },
+    {
+      "id": "package-squatting",
+      "name": "Package / name squatting in registry",
+      "aliases": [
+        "typosquatting",
+        "server-name squatting"
+      ],
+      "description": "A malicious MCP server published under a name confusingly similar to a trusted one, exploiting the registry's pointer architecture.",
+      "mcpLayer": [
+        "registry-supply-chain"
+      ],
+      "stride": [
+        "Spoofing"
+      ],
+      "nistAiRmf": [
+        "GOVERN",
+        "MAP"
+      ],
+      "owaspLlm2025": [
+        "LLM03"
+      ],
+      "owaspAgentic2026": [
+        "ASI04"
+      ],
+      "priorArtCoverage": [
+        "AgentDefense-Bench"
+      ],
+      "nsaGuidance": [
+        "AUTH"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.55(1)(d)"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.10.3"
+      ]
+    },
+    {
+      "id": "supply-chain-poisoning",
+      "name": "Supply-chain poisoning (unverified provenance)",
+      "aliases": [
+        "artifact provenance gap"
+      ],
+      "description": "The registry indexes metadata pointers with no cryptographic verification of the underlying artifact, so a poisoned binary/endpoint can be served under a trusted name.",
+      "mcpLayer": [
+        "registry-supply-chain"
+      ],
+      "stride": [
+        "Tampering",
+        "Spoofing"
+      ],
+      "nistAiRmf": [
+        "GOVERN",
+        "MAP",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM03",
+        "LLM04"
+      ],
+      "owaspAgentic2026": [
+        "ASI04"
+      ],
+      "priorArtCoverage": [
+        "AgentDefense-Bench"
+      ],
+      "nsaGuidance": [
+        "AUTH"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.55(1)(d)",
+        "Art.73"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.10.3",
+        "A.8.4"
+      ]
+    },
+    {
+      "id": "config-drift",
+      "name": "Configuration drift",
+      "aliases": [
+        "silent config change"
+      ],
+      "description": "Server/tool configuration changes over time away from a reviewed baseline, weakening controls without an explicit rug-pull of the tool schema.",
+      "mcpLayer": [
+        "server",
+        "host-orchestration"
+      ],
+      "stride": [
+        "Tampering"
+      ],
+      "nistAiRmf": [
+        "GOVERN",
+        "MEASURE",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM03"
+      ],
+      "owaspAgentic2026": [
+        "ASI04"
+      ],
+      "priorArtCoverage": [
+        "AgentDefense-Bench"
+      ],
+      "nsaGuidance": [
+        "LOG",
+        "AUTH"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.12",
+        "Art.26",
+        "Art.55(1)(d)",
+        "Art.72"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.6.2.8",
+        "A.6.2.5"
+      ]
+    },
+    {
+      "id": "sandbox-escape",
+      "name": "Sandbox escape",
+      "aliases": [
+        "host compromise via server"
+      ],
+      "description": "A server exploits weak isolation to execute beyond its sandbox on the host.",
+      "mcpLayer": [
+        "server",
+        "host-orchestration"
+      ],
+      "stride": [
+        "ElevationOfPrivilege"
+      ],
+      "nistAiRmf": [
+        "MANAGE",
+        "MEASURE"
+      ],
+      "owaspLlm2025": [
+        "LLM06"
+      ],
+      "owaspAgentic2026": [
+        "ASI02",
+        "ASI03",
+        "ASI05"
+      ],
+      "priorArtCoverage": [
+        "AgentDefense-Bench"
+      ],
+      "nsaGuidance": [
+        "RT"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.55(1)(d)",
+        "Art.73"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.6.2.4",
+        "A.6.2.5",
+        "A.8.4"
+      ]
+    },
+    {
+      "id": "schema-bypass",
+      "name": "Schema / validation bypass",
+      "aliases": [
+        "input validation bypass"
+      ],
+      "description": "Crafted inputs bypass declared schema/validation to reach unintended server code paths.",
+      "mcpLayer": [
+        "server",
+        "tool"
+      ],
+      "stride": [
+        "Tampering",
+        "ElevationOfPrivilege"
+      ],
+      "nistAiRmf": [
+        "MEASURE",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM05"
+      ],
+      "owaspAgentic2026": [
+        "ASI02"
+      ],
+      "priorArtCoverage": [
+        "AgentDefense-Bench"
+      ],
+      "nsaGuidance": [
+        "RT"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "revisionNotes": "2026-07-28 adds the x-mcp-header annotation, which mirrors declared parameters into HTTP headers and carries its own normative constraints (token syntax, no CR/LF, primitive types, static reachability).",
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.55(1)(d)"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.6.2.4"
+      ]
+    },
+    {
+      "id": "mitm-transport",
+      "name": "Man-in-the-middle (transport)",
+      "aliases": [
+        "transport interception"
+      ],
+      "description": "Interception/modification of MCP messages in transit on an unauthenticated or downgraded transport.",
+      "mcpLayer": [
+        "transport"
+      ],
+      "stride": [
+        "Tampering",
+        "InformationDisclosure",
+        "Spoofing"
+      ],
+      "nistAiRmf": [
+        "MANAGE",
+        "MEASURE"
+      ],
+      "owaspLlm2025": [
+        "LLM02"
+      ],
+      "owaspAgentic2026": [
+        "ASI03",
+        "ASI07"
+      ],
+      "priorArtCoverage": [
+        "AgentDefense-Bench"
+      ],
+      "nsaGuidance": [
+        "RT",
+        "AUTH"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.55(1)(d)"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.6.2.5"
+      ]
+    },
+    {
+      "id": "dns-rebinding",
+      "name": "DNS rebinding (local servers)",
+      "aliases": [
+        "local-server rebinding"
+      ],
+      "description": "A malicious web origin rebinds DNS to reach a locally-bound MCP server, crossing the local trust boundary.",
+      "mcpLayer": [
+        "transport",
+        "server"
+      ],
+      "stride": [
+        "Spoofing",
+        "ElevationOfPrivilege"
+      ],
+      "nistAiRmf": [
+        "MANAGE",
+        "MEASURE"
+      ],
+      "owaspLlm2025": [
+        "LLM06"
+      ],
+      "owaspAgentic2026": [
+        "ASI03",
+        "ASI07"
+      ],
+      "priorArtCoverage": [
+        "AgentDefense-Bench"
+      ],
+      "nsaGuidance": [
+        "AUTH",
+        "RT"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "revisionNotes": "Unchanged: Origin validation with HTTP 403 on an invalid Origin remains a MUST in streamable-http §Security & Endpoint.",
+      "mappingNotes": "OWASP LLM 2025 LLM06 is indicative only (no LLM category describes DNS rebinding); flagged during adjudication.",
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.55(1)(d)"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.6.2.5"
+      ]
+    },
+    {
+      "id": "server-impersonation",
+      "name": "Server impersonation / identity spoofing",
+      "aliases": [
+        "unverified server identity"
+      ],
+      "description": "An endpoint impersonates a trusted server because server identity is unverified (registry proves publisher identity, not artifact/endpoint).",
+      "mcpLayer": [
+        "registry-supply-chain",
+        "transport"
+      ],
+      "stride": [
+        "Spoofing"
+      ],
+      "nistAiRmf": [
+        "GOVERN",
+        "MAP",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM03"
+      ],
+      "owaspAgentic2026": [
+        "ASI03",
+        "ASI04"
+      ],
+      "priorArtCoverage": [],
+      "nsaGuidance": [
+        "AUTH"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "revisionNotes": "2026-07-28 models the MCP server as a standard OAuth 2.0 resource server advertising protected-resource metadata, changing how identity is established.",
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.55(1)(d)",
+        "Art.72"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.10.3"
+      ]
+    },
+    {
+      "id": "excessive-permission",
+      "name": "Excessive permission / privilege escalation",
+      "aliases": [
+        "over-broad scopes",
+        "privilege creep"
+      ],
+      "description": "A tool/server is granted or acquires more privilege than its task requires, expanding blast radius.",
+      "mcpLayer": [
+        "host-orchestration",
+        "server"
+      ],
+      "stride": [
+        "ElevationOfPrivilege"
+      ],
+      "nistAiRmf": [
+        "GOVERN",
+        "MAP",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM06"
+      ],
+      "owaspAgentic2026": [
+        "ASI03"
+      ],
+      "priorArtCoverage": [
+        "MSB",
+        "AgentDefense-Bench"
+      ],
+      "nsaGuidance": [
+        "AUTH"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.14",
+        "Art.26",
+        "Art.55(1)(d)"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.6.2.5",
+        "A.9.2"
+      ]
+    },
+    {
+      "id": "credential-token-theft",
+      "name": "Credential / token theft via passthrough",
+      "aliases": [
+        "OAuth token abuse",
+        "token passthrough"
+      ],
+      "description": "Abuse of OAuth/token passthrough to capture or replay credentials the agent holds for downstream services.",
+      "mcpLayer": [
+        "host-orchestration",
+        "transport"
+      ],
+      "stride": [
+        "InformationDisclosure",
+        "ElevationOfPrivilege"
+      ],
+      "nistAiRmf": [
+        "GOVERN",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM02",
+        "LLM06"
+      ],
+      "owaspAgentic2026": [
+        "ASI03"
+      ],
+      "priorArtCoverage": [
+        "AgentDefense-Bench"
+      ],
+      "nsaGuidance": [
+        "RT",
+        "SEG",
+        "AUTH"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "revisionNotes": "Authorization was rewritten in 2026-07-28: RFC 9207 issuer validation is mandatory, credentials are bound to the issuer that minted them, and DCR is deprecated in favour of CIMD.",
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.55(1)(d)",
+        "Art.73"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.8.4"
+      ]
+    },
+    {
+      "id": "consent-fatigue",
+      "name": "Consent fatigue / over-broad grants",
+      "aliases": [
+        "click-through consent"
+      ],
+      "description": "Users approve broad scopes under repeated prompts, granting standing access an attacker later abuses.",
+      "mcpLayer": [
+        "client",
+        "host-orchestration"
+      ],
+      "stride": [
+        "ElevationOfPrivilege",
+        "Repudiation"
+      ],
+      "nistAiRmf": [
+        "GOVERN",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM06"
+      ],
+      "owaspAgentic2026": [
+        "ASI03"
+      ],
+      "priorArtCoverage": [],
+      "nsaGuidance": [
+        "AUTH"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.14",
+        "Art.26"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.6.2.5",
+        "A.9.2"
+      ]
+    },
+    {
+      "id": "command-injection",
+      "name": "Command injection in tool execution",
+      "aliases": [
+        "OS command injection"
+      ],
+      "description": "Unsanitized arguments reach a shell/OS call inside a server, executing attacker commands.",
+      "mcpLayer": [
+        "server"
+      ],
+      "stride": [
+        "ElevationOfPrivilege",
+        "Tampering"
+      ],
+      "nistAiRmf": [
+        "MEASURE",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM05"
+      ],
+      "owaspAgentic2026": [
+        "ASI02",
+        "ASI05"
+      ],
+      "priorArtCoverage": [
+        "AgentDefense-Bench"
+      ],
+      "nsaGuidance": [
+        "RT"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.55(1)(d)",
+        "Art.73"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.6.2.4",
+        "A.8.4"
+      ]
+    },
+    {
+      "id": "system-prompt-leakage",
+      "name": "System-prompt / context leakage via tools",
+      "aliases": [
+        "context exfiltration"
+      ],
+      "description": "A tool coaxes the agent into revealing its system prompt or privileged context in a tool call or response.",
+      "mcpLayer": [
+        "client",
+        "tool"
+      ],
+      "stride": [
+        "InformationDisclosure"
+      ],
+      "nistAiRmf": [
+        "MEASURE",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM07",
+        "LLM02"
+      ],
+      "owaspAgentic2026": [
+        "ASI01"
+      ],
+      "priorArtCoverage": [
+        "MSB",
+        "AgentDefense-Bench"
+      ],
+      "nsaGuidance": [
+        "RT",
+        "LOG"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.12"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.6.2.8"
+      ]
+    },
+    {
+      "id": "mid-session-tool-injection",
+      "name": "Mid-session tool injection (MSTI)",
+      "aliases": [
+        "tool hijacking",
+        "tool framing",
+        "runtime tool-surface poisoning"
+      ],
+      "description": "Tools are injected, or their metadata is altered, during an ACTIVE session (not at registration) — via dynamic tool-lifecycle races (AbortSignal, registration races) or by re-framing metadata (readOnlyHint, description, inputSchema) to mislead the agent. Distinct from definition-time poisoning.",
+      "mcpLayer": [
+        "client",
+        "tool"
+      ],
+      "stride": [
+        "Tampering",
+        "Spoofing"
+      ],
+      "nistAiRmf": [
+        "MEASURE",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM01",
+        "LLM06"
+      ],
+      "owaspAgentic2026": [
+        "ASI01",
+        "ASI04"
+      ],
+      "priorArtCoverage": [],
+      "provenance": "arXiv:2606.06387 (WebMCP Tool Surface Poisoning / MSTI)",
+      "nsaGuidance": [
+        "AUTH",
+        "LOG"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "revisionNotes": "2026-07-28 removes protocol-level sessions, so 'mid-session' is no longer a connection property. The equivalent surface is notifications/tools/list_changed plus cached list results.",
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.12",
+        "Art.14",
+        "Art.72"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.6.2.8",
+        "A.4.4",
+        "A.10.3"
+      ]
+    },
+    {
+      "id": "multi-tool-split-poisoning",
+      "name": "Multi-tool split poisoning (ShareLock)",
+      "aliases": [
+        "threshold poisoning",
+        "split-payload tool poisoning"
+      ],
+      "description": "A malicious instruction is split across multiple benign-looking tool descriptions (threshold secret-sharing) so each tool passes single-tool scanning; the payload reassembles via a covert trigger. Defeats per-tool detectors.",
+      "mcpLayer": [
+        "tool",
+        "registry-supply-chain"
+      ],
+      "stride": [
+        "Tampering"
+      ],
+      "nistAiRmf": [
+        "MEASURE",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM01",
+        "LLM03"
+      ],
+      "owaspAgentic2026": [
+        "ASI01",
+        "ASI04"
+      ],
+      "priorArtCoverage": [],
+      "provenance": "arXiv:2606.27027 (ShareLock threshold poisoning)",
+      "nsaGuidance": [
+        "RT",
+        "LOG"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.12",
+        "Art.55(1)(d)"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.6.2.8",
+        "A.4.4",
+        "A.10.3"
+      ]
+    },
+    {
+      "id": "header-body-desync",
+      "name": "Header/body routing desync (HeaderMismatch)",
+      "aliases": [
+        "Mcp-Name mismatch",
+        "routing-header confusion",
+        "-32020 HeaderMismatch"
+      ],
+      "description": "The 2026-07-28 revision mirrors JSON-RPC routing fields into HTTP headers (MCP-Protocol-Version, Mcp-Method, Mcp-Name, Mcp-Param-*). An intermediary that routes or authorizes on the header while the server executes the body lets a call for one tool be authorized as another. The body is the source of truth; servers MUST reject a disagreement with -32020.",
+      "mcpLayer": [
+        "transport",
+        "host-orchestration"
+      ],
+      "stride": [
+        "Tampering",
+        "ElevationOfPrivilege"
+      ],
+      "nistAiRmf": [
+        "MEASURE",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM06"
+      ],
+      "owaspAgentic2026": [
+        "ASI02",
+        "ASI03"
+      ],
+      "nsaGuidance": [
+        "AUTH",
+        "RT"
+      ],
+      "provenance": "modelcontextprotocol.io/specification/2026-07-28/basic/transports/streamable-http §Server Validation (normative; error code -32020)",
+      "priorArtCoverage": [],
+      "appliesTo": [
+        "2026-07-28"
+      ],
+      "revisionNotes": "Introduced by the 2026-07-28 revision; does not exist in earlier protocol shapes.",
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.55(1)(d)"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.6.2.4"
+      ]
+    },
+    {
+      "id": "requeststate-forgery",
+      "name": "MRTR requestState forgery / replay",
+      "aliases": [
+        "state-handle tampering",
+        "cross-principal replay",
+        "forged approval"
+      ],
+      "description": "Server-initiated requests were replaced by MRTR: the server returns input_required with an opaque requestState the client echoes back. requestState now travels as attacker-influenceable data through the model context. Without HMAC/AEAD integrity protection and principal/TTL binding, a caller can edit an approval decision or replay another principal's state.",
+      "mcpLayer": [
+        "server",
+        "host-orchestration"
+      ],
+      "stride": [
+        "Tampering",
+        "Spoofing",
+        "ElevationOfPrivilege"
+      ],
+      "nistAiRmf": [
+        "MEASURE",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM06"
+      ],
+      "owaspAgentic2026": [
+        "ASI03",
+        "ASI09"
+      ],
+      "nsaGuidance": [
+        "AUTH",
+        "RT"
+      ],
+      "provenance": "specification/2026-07-28/basic/patterns/mrtr §Server Requirements 4–5 (MUST protect integrity; SHOULD bind principal/TTL/origin). Tool state handles are non-normative and scored at lower severity.",
+      "priorArtCoverage": [],
+      "appliesTo": [
+        "2026-07-28"
+      ],
+      "revisionNotes": "Introduced by the 2026-07-28 revision; does not exist in earlier protocol shapes.",
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.55(1)(d)",
+        "Art.73"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.6.2.4",
+        "A.8.4"
+      ]
+    },
+    {
+      "id": "list-cache-poisoning",
+      "name": "List-result cache poisoning / stale-cache defense suppression",
+      "aliases": [
+        "ttlMs pinning",
+        "cacheScope confusion",
+        "stale tools/list"
+      ],
+      "description": "List results are now cacheable (ttlMs, cacheScope). A poisoned tools/list can be pinned with a very long TTL and public scope, shared across authorization contexts, or — the defense-defeating case — kept serving after a list_changed invalidation so a definition change that hash-pinning would catch is never re-fetched.",
+      "mcpLayer": [
+        "client",
+        "tool"
+      ],
+      "stride": [
+        "Tampering"
+      ],
+      "nistAiRmf": [
+        "MEASURE",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM01",
+        "LLM03"
+      ],
+      "owaspAgentic2026": [
+        "ASI01",
+        "ASI04",
+        "ASI06"
+      ],
+      "nsaGuidance": [
+        "RT",
+        "LOG"
+      ],
+      "provenance": "specification/2026-07-28/server/utilities/caching (§TTL — no ceiling; §Security Considerations; §Interaction with Notifications). Stale-cache-vs-pinning composition is novel to this benchmark.",
+      "priorArtCoverage": [],
+      "appliesTo": [
+        "2026-07-28"
+      ],
+      "revisionNotes": "Introduced by the 2026-07-28 revision; does not exist in earlier protocol shapes.",
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.12",
+        "Art.72"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.6.2.8",
+        "A.4.4",
+        "A.10.3"
+      ]
+    },
+    {
+      "id": "mrtr-input-phishing",
+      "name": "MRTR in-band input phishing / sampling injection",
+      "aliases": [
+        "credential elicitation",
+        "input_required phishing",
+        "server-injected systemPrompt"
+      ],
+      "description": "An input_required result carries server-authored elicitation or sampling requests through the client to the user or to the client's own model. A server can request credentials under an official-looking pretext or inject a systemPrompt that steers the client's LLM, through a channel the user does not recognise as server-originated.",
+      "mcpLayer": [
+        "client",
+        "host-orchestration"
+      ],
+      "stride": [
+        "Spoofing",
+        "InformationDisclosure"
+      ],
+      "nistAiRmf": [
+        "MAP",
+        "MEASURE",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM01",
+        "LLM02"
+      ],
+      "owaspAgentic2026": [
+        "ASI01",
+        "ASI03",
+        "ASI09"
+      ],
+      "nsaGuidance": [
+        "AUTH",
+        "RT"
+      ],
+      "provenance": "specification/2026-07-28/basic/patterns/mrtr (permits ElicitRequest / CreateMessageRequest inside inputRequests); ext-tasks trust-model note. Supersedes the pre-revision elicitation/sampling candidates.",
+      "priorArtCoverage": [],
+      "appliesTo": [
+        "2026-07-28"
+      ],
+      "revisionNotes": "Introduced by the 2026-07-28 revision; does not exist in earlier protocol shapes.",
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.14"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.10.3"
+      ]
+    },
+    {
+      "id": "task-authz-bypass",
+      "name": "Task authorization bypass",
+      "aliases": [
+        "guessable task IDs",
+        "cross-principal tasks/get",
+        "task routing desync"
+      ],
+      "description": "The Tasks extension keeps long-running state addressable by task ID without protocol sessions. Low-entropy IDs or a missing per-request authorization check let a third party read or substitute another principal's task; on task methods Mcp-Name must equal params.taskId, so header desync applies to task state too. There is deliberately no tasks/list, so no enumeration variant exists.",
+      "mcpLayer": [
+        "server",
+        "host-orchestration"
+      ],
+      "stride": [
+        "ElevationOfPrivilege",
+        "InformationDisclosure",
+        "Spoofing"
+      ],
+      "nistAiRmf": [
+        "MEASURE",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM02",
+        "LLM06"
+      ],
+      "owaspAgentic2026": [
+        "ASI03"
+      ],
+      "nsaGuidance": [
+        "AUTH",
+        "LOG"
+      ],
+      "provenance": "specification/2026-07-28/tasks.md §Security Considerations (MUST: sufficient entropy; authz on each request) and §Streamable HTTP: Routing Headers.",
+      "priorArtCoverage": [],
+      "appliesTo": [
+        "2026-07-28"
+      ],
+      "revisionNotes": "Introduced by the 2026-07-28 revision; does not exist in earlier protocol shapes.",
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.12",
+        "Art.55(1)(d)"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.6.2.8",
+        "A.6.2.4"
+      ]
+    },
+    {
+      "id": "mcp-app-sandbox-bypass",
+      "name": "MCP Apps sandbox non-conformance",
+      "aliases": [
+        "ui:// resource egress",
+        "host iframe sandbox",
+        "UI credential capture"
+      ],
+      "description": "MCP Apps (SEP-1865) lets a server ship HTML rendered inside the host. The specification requires a sandboxed iframe under a CSP that blocks external requests; the risk is a host that renders ui:// content without enforcing that model, allowing off-origin egress, clickjacking, or credential-capturing UI mimicry. The testable property is host conformance, not the extension itself.",
+      "mcpLayer": [
+        "host-orchestration",
+        "client"
+      ],
+      "stride": [
+        "Tampering",
+        "InformationDisclosure"
+      ],
+      "nistAiRmf": [
+        "MAP",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM05",
+        "LLM02"
+      ],
+      "owaspAgentic2026": [
+        "ASI05",
+        "ASI09"
+      ],
+      "nsaGuidance": [
+        "RT"
+      ],
+      "provenance": "SEP-1865 MCP Apps (Final 2026-01-26). Vendor 'open XSS surface' framing corrected during verification; confidence medium.",
+      "priorArtCoverage": [],
+      "appliesTo": [
+        "2026-07-28"
+      ],
+      "revisionNotes": "Introduced by the 2026-07-28 revision; does not exist in earlier protocol shapes.",
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.14",
+        "Art.26"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.6.2.5",
+        "A.10.3"
+      ]
+    },
+    {
+      "id": "roots-scope-gap",
+      "name": "Roots deprecation: no enforced filesystem boundary",
+      "aliases": [
+        "missing roots",
+        "path scope gap",
+        "unbounded file tool"
+      ],
+      "description": "Roots — the protocol's only structural filesystem-scope declaration — is deprecated as of 2026-07-28, with the migration path 'pass directories via tool parameters, resource URIs, or server configuration'. Scope enforcement therefore moves into each implementation and is applied inconsistently. Distinct in cause from sandbox-escape: the boundary is absent by design change, not escaped.",
+      "mcpLayer": [
+        "host-orchestration",
+        "server"
+      ],
+      "stride": [
+        "ElevationOfPrivilege",
+        "InformationDisclosure"
+      ],
+      "nistAiRmf": [
+        "MAP",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM06",
+        "LLM02"
+      ],
+      "owaspAgentic2026": [
+        "ASI02",
+        "ASI03"
+      ],
+      "nsaGuidance": [
+        "SEG",
+        "AUTH"
+      ],
+      "provenance": "Deprecated-features registry, specification/2026-07-28 (SEP-2577; earliest removal ≥ 2027-07-28).",
+      "priorArtCoverage": [],
+      "appliesTo": [
+        "2026-07-28"
+      ],
+      "revisionNotes": "Introduced by the 2026-07-28 revision; does not exist in earlier protocol shapes.",
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.26",
+        "Art.55(1)(d)"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.6.2.4",
+        "A.6.2.5",
+        "A.9.2"
+      ]
+    },
+    {
+      "id": "transport-downgrade",
+      "name": "Transport / revision downgrade",
+      "aliases": [
+        "legacy session acceptance",
+        "HTTP+SSE fallback",
+        "Mcp-Session-Id honoured"
+      ],
+      "description": "A defender that still honours pre-2026-07-28 mechanics — Mcp-Session-Id, GET-opened SSE streams, Last-Event-ID resumption, or an older MCP-Protocol-Version without header validation — silently reverts to the weaker shape and loses the revision's guarantees (stateless core, header validation, MRTR).",
+      "mcpLayer": [
+        "transport"
+      ],
+      "stride": [
+        "Tampering",
+        "Spoofing"
+      ],
+      "nistAiRmf": [
+        "MEASURE",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [],
+      "owaspAgentic2026": [
+        "ASI07"
+      ],
+      "nsaGuidance": [
+        "AUTH",
+        "RT"
+      ],
+      "mappingNotes": "No OWASP LLM 2025 category describes a protocol-transport downgrade; left empty deliberately rather than forced.",
+      "provenance": "specification/2026-07-28/basic/transports/streamable-http §Backward Compatibility / §Earlier Streamable HTTP Revisions; HTTP+SSE deprecated since 2025-03-26.",
+      "priorArtCoverage": [],
+      "appliesTo": [
+        "2026-07-28"
+      ],
+      "revisionNotes": "Introduced by the 2026-07-28 revision; does not exist in earlier protocol shapes.",
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.26",
+        "Art.55(1)(d)"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.6.2.5"
+      ]
+    },
+    {
+      "id": "delegation-audience-confusion",
+      "name": "Delegated-token audience confusion (lateral misroute or passthrough)",
+      "aliases": [
+        "cross-audience token replay",
+        "confused deputy across sub-agents",
+        "gateway token relayed upstream",
+        "unscoped delegate token"
+      ],
+      "description": "In agent-to-sub-agent delegation, a caller sends one short-lived token per downstream audience through a relay. A token is presented to a party it was not issued for: a sibling sub-agent's token is routed to the wrong upstream (lateral), or a token issued for the relay itself, or carrying no audience at all, is passed on downstream (passthrough). Each misuse lets one service's grant act at another.",
+      "mcpLayer": [
+        "host-orchestration",
+        "server"
+      ],
+      "stride": [
+        "Spoofing",
+        "ElevationOfPrivilege"
+      ],
+      "nistAiRmf": [
+        "MEASURE",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM06"
+      ],
+      "owaspAgentic2026": [
+        "ASI03",
+        "ASI07"
+      ],
+      "priorArtCoverage": [],
+      "nsaGuidance": [
+        "AUTH",
+        "LOG"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "revisionNotes": "Header-carried delegate tokens are independent of protocol revision; audience binding of tokens to the receiving MCP server is required by the MCP authorization specification.",
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.12",
+        "Art.73"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.6.2.8",
+        "A.6.2.4",
+        "A.6.2.5",
+        "A.8.4"
+      ],
+      "provenance": "MCP Security Best Practices, 'Token Passthrough' (servers MUST NOT accept tokens not explicitly issued for them); RFC 8707 resource indicators; RFC 8725 §3.9 (validate the audience). Distinct from credential-token-theft, whose fixtures are result-borne capture of a token by the agent.",
+      "vectorFamily": "delegation"
+    },
+    {
+      "id": "delegation-subject-mixing",
+      "name": "Delegation subject mixing (one request, several users)",
+      "aliases": [
+        "session splicing across sub-agents",
+        "identity mixing",
+        "cross-user token bundling"
+      ],
+      "description": "One downstream request carries several delegate tokens, one per sub-agent, that name different end users (different subject, or the same subject string from a different issuer). Each sub-agent sees only its own token, which is valid on its own, so the composite operation runs partly as one user and partly as another. Only a component that sees the whole request can notice.",
+      "mcpLayer": [
+        "host-orchestration"
+      ],
+      "stride": [
+        "Spoofing",
+        "ElevationOfPrivilege"
+      ],
+      "nistAiRmf": [
+        "MEASURE",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM06"
+      ],
+      "owaspAgentic2026": [
+        "ASI03",
+        "ASI07"
+      ],
+      "priorArtCoverage": [],
+      "nsaGuidance": [
+        "AUTH",
+        "LOG"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.12",
+        "Art.73"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.6.2.8",
+        "A.6.2.4",
+        "A.8.4"
+      ],
+      "provenance": "OWASP Top 10 for Agentic Applications 2026, ASI03 Identity and Privilege Abuse; MCP Security Best Practices, session binding to user-specific information; RFC 7519 §4.1.1–4.1.2 (sub is unique within its issuer).",
+      "vectorFamily": "delegation"
+    },
+    {
+      "id": "delegation-stale-relay",
+      "name": "Stale or over-long delegate token relayed",
+      "aliases": [
+        "expired token replay",
+        "not-yet-valid token",
+        "long-lived delegation token"
+      ],
+      "description": "A delegate token outside its validity window (expired, not yet valid, or without any expiry) or with a lifetime far longer than the deployment's delegation policy is relayed to a sub-agent, extending a captured or over-issued grant beyond its intended use.",
+      "mcpLayer": [
+        "host-orchestration",
+        "server"
+      ],
+      "stride": [
+        "Spoofing",
+        "ElevationOfPrivilege"
+      ],
+      "nistAiRmf": [
+        "GOVERN",
+        "MEASURE",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM06"
+      ],
+      "owaspAgentic2026": [
+        "ASI03",
+        "ASI07"
+      ],
+      "priorArtCoverage": [],
+      "nsaGuidance": [
+        "AUTH",
+        "LOG"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.12"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.6.2.8",
+        "A.6.2.4"
+      ],
+      "provenance": "RFC 7519 §4.1.4–4.1.5 (exp, nbf); RFC 8725 (JWT BCP); NSA MCP guidance, least-privilege tokens per action.",
+      "vectorFamily": "delegation"
+    },
+    {
+      "id": "delegation-chain-laundering",
+      "name": "Delegation chain laundering",
+      "aliases": [
+        "unexpected current actor",
+        "deep act chain",
+        "cyclic delegation"
+      ],
+      "description": "A delegate token names, as its current actor, an agent the deployment never authorized to act for users, or carries a prior-actor chain that is unexpectedly deep or cyclic, so authority is laundered through intermediate agents and the record of who acted becomes unreliable. Per RFC 8693 only the current actor may drive access control; prior actors are informational and suited to detection and audit.",
+      "mcpLayer": [
+        "host-orchestration"
+      ],
+      "stride": [
+        "ElevationOfPrivilege",
+        "Repudiation"
+      ],
+      "nistAiRmf": [
+        "GOVERN",
+        "MEASURE",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM06"
+      ],
+      "owaspAgentic2026": [
+        "ASI03",
+        "ASI07"
+      ],
+      "priorArtCoverage": [],
+      "nsaGuidance": [
+        "AUTH",
+        "LOG"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.12",
+        "Art.26"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.6.2.8",
+        "A.6.2.5",
+        "A.9.2"
+      ],
+      "provenance": "RFC 8693 §4.1 (act claim; outermost act is the current actor; nested act claims are informational only).",
+      "vectorFamily": "delegation"
+    },
+    {
+      "id": "delegation-signature-forgery",
+      "name": "Delegate token signature forgery",
+      "aliases": [
+        "alg none",
+        "algorithm confusion",
+        "jku injection",
+        "post-signing tamper"
+      ],
+      "description": "A delegate token whose signature does not verify under the deployment's trusted keys is presented as genuine: unsigned (alg none), signed with an attacker key, signed with HMAC using the public key as secret (algorithm confusion), pointing to an attacker-controlled key set, or altered after signing.",
+      "mcpLayer": [
+        "server",
+        "host-orchestration"
+      ],
+      "stride": [
+        "Spoofing",
+        "Tampering",
+        "ElevationOfPrivilege"
+      ],
+      "nistAiRmf": [
+        "GOVERN",
+        "MEASURE",
+        "MANAGE"
+      ],
+      "owaspLlm2025": [
+        "LLM06"
+      ],
+      "owaspAgentic2026": [
+        "ASI03",
+        "ASI07"
+      ],
+      "priorArtCoverage": [],
+      "nsaGuidance": [
+        "AUTH",
+        "RT"
+      ],
+      "appliesTo": [
+        "2025-03-26",
+        "2025-06-18",
+        "2025-11-25",
+        "2026-07-28"
+      ],
+      "euAiAct": [
+        "Art.15(5)",
+        "Art.55(1)(d)",
+        "Art.73"
+      ],
+      "iso42001": [
+        "A.6.2.6",
+        "A.6.2.4",
+        "A.8.4"
+      ],
+      "mappingNotes": "OWASP LLM 2025 LLM06 is indicative only (mapped on direct impact: forged authority makes the agent act beyond its grant; no LLM category describes JWS forgery); kept at adjudication, Rater B left it empty.",
+      "provenance": "RFC 8725 §2.1–2.2, §3.1–3.2 (algorithm verification, key/algorithm binding); RFC 7515 (JWS).",
+      "vectorFamily": "delegation"
+    }
+  ],
+  "_specRevisions": {
+    "_comment": "NON-SCORING metadata. `appliesTo` on each vector records the MCP protocol revisions in which that vector's mechanism exists; `revisionNotes` appears only where a revision materially changed the mechanism. No scorer reads these fields. Coverage numbers are only meaningful relative to a revision, and the published v0.3-v0.6 results were measured against the pre-2026-07-28 shape.",
+    "known": [
+      "2025-03-26",
+      "2025-06-18",
+      "2025-11-25",
+      "2026-07-28"
+    ],
+    "measuredAgainst": [
+      "2025-11-25",
+      "2026-07-28"
+    ],
+    "latest": "2026-07-28",
+    "promoted": {
+      "2026-07-28": "8 vectors promoted from staging on 2026-09-05 (v0.7.0). Use appliesTo to compute coverage per revision.",
+      "delegation": "5 delegation-family vectors (vectorFamily: delegation) promoted from staging/delegation on 2026-10-16 (v0.9.0), pre-registered in docs/DELEGATION-PREREG.md; rows adjudicated in rubric/ratings/ADJUDICATION.md. Totals are reported over the 32 previously published vectors and over all 37."
+    }
+  }
+}
