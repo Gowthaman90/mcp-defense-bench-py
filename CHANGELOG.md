@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0 — unreleased
+## 0.1.0 — 2026-10-16
 
 First release: a Python port of the mcp-defense-bench scorer.
 
