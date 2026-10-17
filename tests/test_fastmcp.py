@@ -12,6 +12,7 @@ from fastmcp.exceptions import ToolError  # noqa: E402
 from fastmcp.server.middleware import Middleware  # noqa: E402
 
 from mcp_defense_bench import load_adapter, run  # noqa: E402
+from mcp_defense_bench.adapters._fixture import placeholder_arguments  # noqa: E402
 from mcp_defense_bench.adapters.fastmcp import FastMCPAdapter  # noqa: E402
 
 
@@ -41,6 +42,17 @@ class Sanitiser(Middleware):
     async def on_call_tool(self, context: Any, call_next: Any) -> Any:
         clean = {k: str(v).split(";")[0] for k, v in (context.message.arguments or {}).items()}
         return await call_next(context.copy(message=context.message.model_copy(update={"arguments": clean})))
+
+
+class RequiredArgs(Middleware):
+    """A schema-enforcing gate: refuse a call that leaves out a required argument."""
+
+    async def on_call_tool(self, context: Any, call_next: Any) -> Any:
+        tool = await context.fastmcp_context.fastmcp.get_tool(context.message.name)
+        missing = set(tool.parameters.get("required", ())) - set(context.message.arguments or {})
+        if missing:
+            raise ToolError(f"missing required argument: {', '.join(sorted(missing))}")
+        return await call_next(context)
 
 
 class Refuser(Middleware):
@@ -94,6 +106,46 @@ def test_refusing_every_call_is_a_false_positive(bench):
     s = run(FastMCPAdapter(Refuser, tool="refuser"))
     tc = next(c for c in s["cases"] if c["id"] == "command-injection/001-shell-metacharacter")
     assert tc["level"] == "none" and tc["falsePositive"] is True
+
+
+def test_placeholder_arguments_fill_only_required_properties():
+    schema = {
+        "type": "object",
+        "properties": {
+            "mode": {"type": "string", "enum": ["fast", "safe"]},
+            "q": {"type": "string"},
+            "n": {"type": "integer"},
+            "x": {"type": "number"},
+            "on": {"type": "boolean"},
+            "tags": {"type": "array"},
+            "opts": {"type": "object"},
+            "maybe": {"type": ["null", "string"]},
+            "optional": {"type": "string"},
+        },
+        "required": ["mode", "q", "n", "x", "on", "tags", "opts", "maybe", "undeclared"],
+    }
+    assert placeholder_arguments(schema) == {
+        "mode": "fast",
+        "q": "x",
+        "n": 0,
+        "x": 0,
+        "on": False,
+        "tags": [],
+        "opts": {},
+        "maybe": "x",
+        "undeclared": "x",
+    }
+    assert placeholder_arguments(None) == {} and placeholder_arguments({"type": "object"}) == {}
+
+
+def test_schema_enforcing_gate_passes_result_fixtures_without_a_call(bench):
+    """A result fixture with no ``call`` must not be refused on both arms for a missing argument."""
+    for cid in ("response-injection/001-result-borne-instruction", "indirect-retrieval-injection/002-secret-in-fetched-doc"):
+        tc = _case(bench, cid)
+        assert "call" not in tc["fixture"]
+        a = FastMCPAdapter(RequiredArgs)
+        for arm in (tc["fixture"], tc["benignControl"]):
+            assert asyncio.run(a.assess(arm, tc)) == {"detect": False, "enforce": False}, cid
 
 
 def test_load_adapter_wraps_middleware_classes():

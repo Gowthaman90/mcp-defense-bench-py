@@ -16,6 +16,11 @@ Fixture types it can express (others stay ``unknown``, per the bench's integrity
 ``definition-change``                       list, swap ``before`` → ``after``, list again
 ==========================================  ==========================================
 
+A result fixture that gives no ``call`` is called with placeholder values for the tool's
+``required`` arguments (first ``enum`` value, ``"x"``, ``0``, ``false``, ``[]``, ``{}``), so a gate
+that enforces the input schema does not refuse both arms of a case for a request the fixture never
+specified.
+
 Verdict: **enforce** when the middleware raised, returned an error, kept the call from reaching
 the tool, hid or rewrote a tool definition, or rewrote a result; **detect** when it only logged a
 WARNING or worse on ``warn_logger``; otherwise nothing. Operator-side context a middleware never
@@ -30,58 +35,23 @@ from collections.abc import Callable, Mapping
 from typing import Any
 
 try:
-    import mcp.types as mt
     from fastmcp import Client, FastMCP
     from fastmcp.server.middleware import Middleware
-    from fastmcp.tools.base import Tool, ToolResult
-    from pydantic import Field
+
+    from mcp_defense_bench.adapters._fixture import (
+        FIXTURE_TYPES,
+        FixtureTool,
+        call_outcome,
+        calls,
+        diff,
+        fixture_reply,
+        fixture_tool,
+        listing,
+    )
 except ImportError as e:  # pragma: no cover - exercised only without the extra
     raise ImportError("the FastMCP adapter needs fastmcp: pip install 'mcp-defense-bench[fastmcp]'") from e
 
 __all__ = ["FIXTURE_TYPES", "FastMCPAdapter"]
-
-FIXTURE_TYPES = (
-    "malicious-tool-definition",
-    "benign-tool-definition",
-    "tool-call",
-    "malicious-tool-result",
-    "benign-tool-result",
-    "tool-call-sequence",
-    "definition-change",
-)
-_ANY_OBJECT = {"type": "object", "additionalProperties": True}
-
-
-class _FixtureTool(Tool):
-    """A tool that serves a fixture's definition and returns its recorded result."""
-
-    reply: list[dict[str, Any]] | None = None
-    invocations: list[dict[str, Any]] = Field(default_factory=list)
-
-    async def run(self, arguments: dict[str, Any]) -> ToolResult:
-        self.invocations.append(dict(arguments))
-        blocks = self.reply or [{"type": "text", "text": "ok"}]
-        return ToolResult(content=[mt.TextContent(type="text", text=str(b.get("text", ""))) for b in blocks])
-
-
-def _tool(defn: Mapping[str, Any], reply: list[dict[str, Any]] | None = None) -> _FixtureTool:
-    schema = defn.get("inputSchema")
-    return _FixtureTool(
-        name=str(defn["name"]),
-        description=defn.get("description"),
-        parameters=dict(schema) if isinstance(schema, Mapping) else dict(_ANY_OBJECT),
-        reply=reply,
-        invocations=[],
-    )
-
-
-def _listing(tools: Any) -> list[dict[str, Any]]:
-    return [{"name": t.name, "description": t.description, "inputSchema": t.input_schema} for t in tools]
-
-
-def _call_outcome(r: Any, received: list[dict[str, Any]]) -> dict[str, Any]:
-    texts = [getattr(b, "text", repr(b)) for b in r.content]
-    return {"error": bool(r.is_error), "content": texts, "invoked": len(received), "received": received}
 
 
 class FastMCPAdapter:
@@ -130,7 +100,7 @@ class FastMCPAdapter:
             return {"detect": True, "enforce": True, "signal": f"blocked: {guarded['raised']}"[:200]}
         for i, (b, g) in enumerate(zip(base["steps"], guarded["steps"], strict=False)):
             if b != g:
-                return {"detect": True, "enforce": True, "signal": f"step {i + 1} ({b['op']}): {_diff(b, g)}"[:200]}
+                return {"detect": True, "enforce": True, "signal": f"step {i + 1} ({b['op']}): {diff(b, g)}"[:200]}
         if records:
             return {"detect": True, "enforce": False, "signal": f"warned: {records[0].getMessage()}"[:200]}
         return {"detect": False, "enforce": False}
@@ -145,16 +115,14 @@ class FastMCPAdapter:
         quiet.setLevel(logging.ERROR)  # the client warns when a middleware hides a tool; expected here
         try:
             if ftype in ("malicious-tool-definition", "benign-tool-definition"):
-                server.add_tool(_tool(fx["tool"]))
-            elif ftype == "tool-call" or ftype in ("malicious-tool-result", "benign-tool-result"):
-                result = fx.get("result")
-                reply = list(result.get("content") or []) if isinstance(result, Mapping) else None
-                server.add_tool(_tool(fx["tool"], reply))
+                server.add_tool(fixture_tool(fx["tool"]))
+            elif ftype in ("tool-call", "malicious-tool-result", "benign-tool-result"):
+                server.add_tool(fixture_tool(fx["tool"], fixture_reply(fx)))
             elif ftype == "tool-call-sequence":
                 for name in dict.fromkeys(str(c["name"]) for c in fx["calls"]):
-                    server.add_tool(_tool({"name": name}))
+                    server.add_tool(fixture_tool({"name": name}))
             elif ftype == "definition-change":
-                server.add_tool(_tool(fx["before"]))
+                server.add_tool(fixture_tool(fx["before"]))
             else:
                 raise ValueError(f"fixture type {ftype!r} is not wired for FastMCP")
             if middleware is not None:
@@ -163,20 +131,18 @@ class FastMCPAdapter:
             async with Client(server) as client:
                 try:
                     if ftype in ("malicious-tool-definition", "benign-tool-definition"):
-                        steps.append({"op": "tools/list", "tools": _listing(await client.list_tools())})
+                        steps.append({"op": "tools/list", "tools": listing(await client.list_tools())})
                     elif ftype == "definition-change":
-                        steps.append({"op": "tools/list", "tools": _listing(await client.list_tools())})
+                        steps.append({"op": "tools/list", "tools": listing(await client.list_tools())})
                         server.local_provider.remove_tool(str(fx["before"]["name"]))
-                        server.add_tool(_tool(fx["after"]))
-                        steps.append({"op": "tools/list", "tools": _listing(await client.list_tools())})
+                        server.add_tool(fixture_tool(fx["after"]))
+                        steps.append({"op": "tools/list", "tools": listing(await client.list_tools())})
                     else:
-                        calls = fx["calls"] if ftype == "tool-call-sequence" else [fx.get("call") or {"name": fx["tool"]["name"]}]
-                        for call in calls:
-                            name = str(call["name"])
-                            tool = await _get_tool(server, name)
+                        for call in calls(fx):
+                            tool = await _get_tool(server, call["name"])
                             before = len(tool.invocations)
-                            r = await client.call_tool(name, dict(call.get("arguments") or {}), raise_on_error=False)
-                            steps.append({"op": "tools/call", **_call_outcome(r, tool.invocations[before:])})
+                            r = await client.call_tool(call["name"], call["arguments"], raise_on_error=False)
+                            steps.append(call_outcome(r, tool.invocations[before:]))
                 except Exception as e:  # the middleware may refuse by raising
                     return {"steps": steps, "raised": f"{type(e).__name__}: {e}"}
         finally:
@@ -184,23 +150,10 @@ class FastMCPAdapter:
         return {"steps": steps, "raised": None}
 
 
-async def _get_tool(server: FastMCP, name: str) -> _FixtureTool:
+async def _get_tool(server: FastMCP, name: str) -> FixtureTool:
     tool = await server.get_tool(name)
-    assert isinstance(tool, _FixtureTool)
+    assert isinstance(tool, FixtureTool)
     return tool
-
-
-def _diff(b: Mapping[str, Any], g: Mapping[str, Any]) -> str:
-    if b["op"] == "tools/list":
-        hidden = {t["name"] for t in b["tools"]} - {t["name"] for t in g["tools"]}
-        return f"hid {', '.join(sorted(hidden))}" if hidden else "rewrote a tool definition"
-    if g.get("error") and not b.get("error"):
-        return "returned an error: " + " ".join(g["content"])
-    if g.get("invoked", 0) < b.get("invoked", 0):
-        return "call never reached the tool"
-    if g.get("received") != b.get("received"):
-        return "rewrote the call arguments"
-    return "rewrote the result"
 
 
 class _Collect(logging.Handler):

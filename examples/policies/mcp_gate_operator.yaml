@@ -1,0 +1,20 @@
+# mcp-gate policy for scoring with mcp-defense-bench. See examples/mcp_gate_example.py for why.
+#
+# Rule 1 is the threat-scan rule from mcp-gate's README, unchanged (threshold 4, held for a
+# human). With no approval hook wired, mcp-gate rejects held calls (its documented fail-safe).
+# Rule 2 stands in for the operator's allow-list of the tools their server exposes. Every
+# fixture serves only its own tools, so "allow what I serve" is the same as "*" here. No rule
+# names a fixture's tool, argument or payload.
+name: mcp-defense-bench-operator
+version: "1"
+default_effect: deny
+
+rules:
+  - id: threat-scan-hold
+    effect: require_approval
+    min_threat_score: 4
+    reason: "arguments tripped the threat scanner"
+
+  - id: allow-served-tools
+    effect: allow
+    tools: ["*"]

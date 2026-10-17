@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.2.0 — unreleased
+
+- `StdioProxyAdapter` (`mcp_defense_bench.adapters.stdio`): scores a stdio MCP proxy as it ships,
+  by running each fixture through a fixture server (`python -m mcp_defense_bench.adapters.stdio_server`)
+  once directly and once behind the proxy. `wrap=` takes a command prefix or a
+  `wrap(server_cmd, workdir) -> (cmd, env)` function; `warn_pattern=` scores matching stderr lines
+  as detect. Promoted from the examples, so `pytest --mcp-defense=...` works on a proxy without
+  vendoring them.
+- `FastMCPAdapter` and `StdioProxyAdapter`: a `malicious-`/`benign-tool-result` fixture that gives
+  no `call` is now called with placeholder values for the tool's required arguments (first `enum`
+  value, else `"x"`, `0`, `false`, `[]`, `{}`) instead of `{}`. A schema-enforcing gate used to
+  refuse both arms of such a case, a spurious matched false positive (dev:
+  `indirect-retrieval-injection/002`, `response-injection/001`). Recorded JS results are
+  unaffected: no JS adapter sends MCP traffic for result fixtures.
+- Examples: mcp-assure with an operator pack built from each served tool's schema; mcp-gate-policy
+  and agentx-mcp scored through `StdioProxyAdapter`.
+
 ## 0.1.0 — 2026-10-16
 
 First release: a Python port of the mcp-defense-bench scorer.

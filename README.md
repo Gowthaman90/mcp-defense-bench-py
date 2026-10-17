@@ -98,7 +98,7 @@ replays the same traffic without the middleware and compares the two runs.
 |---|---|
 | `malicious-` / `benign-tool-definition` | `tools/list` |
 | `tool-call` | `tools/call` with the fixture's arguments |
-| `malicious-` / `benign-tool-result` | `tools/call`; the tool returns the fixture's result |
+| `malicious-` / `benign-tool-result` | `tools/call`; the tool returns the fixture's result (no `call` in the fixture: placeholder values for the tool's required arguments) |
 | `tool-call-sequence` | each call in order, in one session |
 | `definition-change` | `tools/list`, swap the definition, `tools/list` again (rug-pulls) |
 
@@ -109,8 +109,42 @@ transport, registries, delegation tokens, …) can't be expressed as FastMCP tra
 stay `unknown`.
 
 See [`examples/keyword_guard.py`](examples/keyword_guard.py), a deliberately naive guard, and
-[`examples/mcp_assure_example.py`](examples/mcp_assure_example.py), which scores mcp-assure's
-shipped `baseline` pack.
+[`examples/mcp_assure_example.py`](examples/mcp_assure_example.py), which scores mcp-assure with
+its shipped `baseline` pack and with an operator pack built from each served tool's schema.
+
+## Stdio proxies
+
+Many defences are not middleware but a command you put in front of the server's launch command
+(`my-proxy --policy p.yaml -- python server.py`). `StdioProxyAdapter` scores one as it ships:
+
+```python
+from mcp_defense_bench.adapters.stdio import StdioProxyAdapter
+
+
+def my_proxy():
+    return StdioProxyAdapter("my-proxy", wrap=["my-proxy", "--policy", "p.yaml", "--"], warn_pattern=r"WARNING")
+```
+
+```bash
+mcp-defense-bench run my_package.bench:my_proxy --corpus all
+pytest --mcp-defense=my_package.bench:my_proxy
+```
+
+For each input it starts a fixture server (`python -m mcp_defense_bench.adapters.stdio_server`,
+which serves the same tools and results as the FastMCP adapter), drives it with `fastmcp.Client`
+over stdio once directly and once through your proxy, and compares the two runs. The verdict
+rules are the FastMCP adapter's, except that **detect** is a stderr line matching `warn_pattern`.
+
+`wrap` is either a command prefix (the server command is appended) or a function
+`wrap(server_cmd, workdir) -> (cmd, extra_env)` for a proxy that needs per-run files or
+environment. `workdir` is a fresh temporary directory per run, so pins, audit logs or a `HOME`
+never leak between inputs. Both runs start from the MCP SDK's minimal default environment, so
+`mcp-defense-bench` must be installed in the interpreter that runs the bench. Two process starts
+per input make a full `--corpus all` run take minutes.
+
+[`examples/mcp_gate_example.py`](examples/mcp_gate_example.py) (mcp-gate-policy) and
+[`examples/agentx_mcp_example.py`](examples/agentx_mcp_example.py) (agentx-mcp) score two
+shipped proxies this way.
 
 ## Fail CI on regressions (pytest)
 
