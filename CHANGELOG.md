@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.2.0 — unreleased
+## 0.2.0 — 2026-10-17
 
 - `StdioProxyAdapter` (`mcp_defense_bench.adapters.stdio`): scores a stdio MCP proxy as it ships,
   by running each fixture through a fixture server (`python -m mcp_defense_bench.adapters.stdio_server`)

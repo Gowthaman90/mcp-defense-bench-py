@@ -8,7 +8,7 @@ reproduces the JS leaderboard's numbers byte for byte.
 '0% (0.0/37 CorpusRobustCoverage)'
 """
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 # The bench release and commit this package scores against. The corpus is vendored from exactly
 # this commit (scripts/vendor_bench.py) and checked against _bench/MANIFEST.json on load.
