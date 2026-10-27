@@ -11,13 +11,13 @@ from pathlib import Path
 from typing import Any
 
 from mcp_defense_bench import BENCH_COMMIT, BENCH_VERSION, __version__
-from mcp_defense_bench.adapters import load_adapter
+from mcp_defense_bench.adapters import load_adapter, meta_dict
 from mcp_defense_bench.baseline import compare, load_baseline, make_baseline, write_baseline
 from mcp_defense_bench.bench import Bench, BenchError, load_manifest
 from mcp_defense_bench.jscompat import stringify, to_fixed
 from mcp_defense_bench.runner import HELDOUT_NOTICE, open_bench, run
-from mcp_defense_bench.scoring import coverage_document
-from mcp_defense_bench.totals import totals, two_totals_row
+from mcp_defense_bench.scoring import coverage_document, unwired_counts
+from mcp_defense_bench.totals import subsets, totals, two_totals_row
 
 
 def _print_matched(res: dict[str, Any], quiet: bool) -> None:
@@ -52,12 +52,28 @@ def _corpora(choice: str) -> list[str]:
     return ["dev", "benign"] if choice == "all" else [choice]
 
 
+def _label(subset: str) -> str:
+    """``family:delegation`` -> ``delegation family``; ``published`` and ``all`` unchanged."""
+    return subset.removeprefix("family:") + (" family" if subset.startswith("family:") else "")
+
+
 def _totals_line(rubric: dict[str, Any], coverage: dict[str, Any]) -> str:
     parts = []
     for name, t in totals(rubric, coverage).items():
-        label = name.removeprefix("family:") + (" family" if name.startswith("family:") else "")
-        parts.append(f"{label} {t['percent']} ({to_fixed(t['robustCoverage'], 1)}/{t['vectors']})")
+        label = _label(name)
+        # Same wording as the leaderboard: a subset the adapter never ran on is "not wired", not 0%.
+        value = f"{t['percent']} ({to_fixed(t['robustCoverage'], 1)}/{t['vectors']})" if t["wired"] else "not wired"
+        parts.append(f"{label} {value}")
     return "  totals: " + " · ".join(parts)
+
+
+def _unwired_line(bench: Bench, adapter: Any, corpus: str) -> str | None:
+    """Cases the adapter is not wired for (``fixtureTypes`` / ``unwiredFixtureTypes``), by fixture type."""
+    counts = unwired_counts(meta_dict(adapter), bench.load_cases(corpus))
+    if not counts:
+        return None
+    effect = "left out of the denominator" if corpus == "benign" else "their vectors stay unknown, not a miss"
+    return f"  not wired ({effect}): " + ", ".join(f"{t} {n}" for t, n in counts.items())
 
 
 def cmd_run(a: argparse.Namespace) -> int:
@@ -67,11 +83,16 @@ def cmd_run(a: argparse.Namespace) -> int:
     for corpus in _corpora(a.corpus):
         res = run(adapter, corpus, bench_path=a.bench_path, heldout_confirm=a.heldout_confirm, allow_unpinned=a.allow_unpinned)
         tool = res["summary"]["tool"]
+        bench = open_bench(a.bench_path, allow_unpinned=True)
         if corpus == "benign":
             _print_benign(res, a.quiet)
         else:
             _print_matched(res, a.quiet)
-            print(_totals_line(open_bench(a.bench_path, allow_unpinned=True).rubric, res["coverage"]))
+            print(_totals_line(bench.rubric, res["coverage"]))
+        # Held-out cases are never read here beyond what scoring them already did.
+        line = _unwired_line(bench, adapter, corpus) if corpus != "heldout" else None
+        if line:
+            print(line)
         if a.out_dir:
             out = Path(a.out_dir)
             _write(out / ("" if corpus == "dev" else corpus) / f"{tool}.json", res)
@@ -136,6 +157,8 @@ def cmd_info(_: argparse.Namespace) -> int:
     m = load_manifest()
     print(f"mcp-defense-bench {__version__} (Python)")
     print(f"  bench {BENCH_VERSION} @ {BENCH_COMMIT}  rubric {m['rubricVersion']}, {m['vectors']} vectors")
+    rubric = Bench.vendored_snapshot(verify=False).rubric
+    print("  " + " · ".join(f"{_label(name)} {len(ids)}" for name, ids in subsets(rubric).items()))
     for c, e in m["corpora"].items():
         print(f"  {c:8} {e['cases']:4} cases  {'vendored' if e['vendored'] else 'hashes only (needs --bench-path)'}")
     return 0

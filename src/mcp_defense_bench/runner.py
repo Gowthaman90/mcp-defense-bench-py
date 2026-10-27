@@ -3,7 +3,7 @@
 >>> from mcp_defense_bench import run
 >>> result = run("mcp_defense_bench.adapters.null:NullBaseline", corpus="dev")
 >>> result["summary"]["overall"]
-'0% (0.0/37 CorpusRobustCoverage)'
+'0% (0.0/41 CorpusRobustCoverage)'
 """
 
 from __future__ import annotations

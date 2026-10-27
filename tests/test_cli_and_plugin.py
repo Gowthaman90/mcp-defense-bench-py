@@ -10,9 +10,12 @@ NULL = "mcp_defense_bench.adapters.null:NullBaseline"
 def test_cli_run_writes_js_layout(tmp_path, capsys):
     assert main(["run", NULL, "--corpus", "all", "--out-dir", str(tmp_path), "-q"]) == 0
     out = capsys.readouterr().out
-    assert '"overall": "0% (0.0/37 CorpusRobustCoverage)"' in out
-    assert "totals: published 0% (0.0/32) · all 0% (0.0/37) · delegation family 0% (0.0/5)" in out
-    assert json.loads((tmp_path / "null-baseline.json").read_text())["summary"]["casesRun"] == 66
+    assert '"overall": "0% (0.0/41 CorpusRobustCoverage)"' in out
+    assert (
+        "totals: published 0% (0.0/32) · all 0% (0.0/41) · delegation family 0% (0.0/5) · authorization family 0% (0.0/4)" in out
+    )
+    assert "not wired" not in out
+    assert json.loads((tmp_path / "null-baseline.json").read_text())["summary"]["casesRun"] == 78
     assert json.loads((tmp_path / "benign" / "null-baseline.json").read_text())["summary"]["items"] == 337
     assert json.loads((tmp_path / "coverage" / "null-baseline.json").read_text())["measuredBy"].startswith("mcp_defense_bench")
 
@@ -26,12 +29,36 @@ def test_cli_verify_and_info(capsys):
     assert main(["verify"]) == 0
     assert main(["info"]) == 0
     out = capsys.readouterr().out
-    assert "OK: matches the pinned manifest" in out and "heldout    63 cases" in out
+    assert "OK: matches the pinned manifest" in out and "heldout    75 cases" in out
+    assert "published 32 · all 41 · delegation family 5 · authorization family 4" in out
 
 
 def test_cli_totals_markdown(js_fixtures, capsys):
     assert main(["totals", str(js_fixtures / "results" / "mcp-bastion.json"), "--markdown"]) == 0
-    assert capsys.readouterr().out.strip() == "| **mcp-bastion** | 62% (19.9/32) | 66% (24.6/37) | 93% (4.7/5) |"
+    assert capsys.readouterr().out.strip() == "| **mcp-bastion** | 63% (20.2/32) | 70% (28.8/41) | 93% (4.7/5) | 100% (4.0/4) |"
+
+
+def test_cli_run_reports_unwired_cases(tmp_path, capsys):
+    """An adapter not wired for authorized-call: its 4 vectors are unknown, and the CLI says why."""
+    mod = tmp_path / "unwired_guard.py"
+    mod.write_text(
+        "class Guard:\n"
+        "    meta = {'tool': 'unwired', 'unwiredFixtureTypes': ['authorized-call']}\n"
+        "    def assess(self, input, testcase):\n"
+        "        return {'detect': False, 'enforce': False}\n"
+    )
+    import sys
+
+    sys.path.insert(0, str(tmp_path))
+    try:
+        assert main(["run", "unwired_guard:Guard", "-q"]) == 0
+    finally:
+        sys.path.remove(str(tmp_path))
+        sys.modules.pop("unwired_guard", None)
+    out = capsys.readouterr().out
+    assert '"casesRun": 66' in out and '"unknown": 4' in out
+    assert "not wired (their vectors stay unknown, not a miss): authorized-call 12" in out
+    assert "authorization family not wired" in out and "authorization family 0%" not in out
 
 
 def test_cli_check_gate(tmp_path, capsys):

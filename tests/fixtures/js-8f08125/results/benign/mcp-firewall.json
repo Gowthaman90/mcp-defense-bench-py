@@ -1,14 +1,14 @@
 {
   "summary": {
-    "tool": "null-baseline",
+    "tool": "mcp-firewall",
     "corpus": "benign",
-    "rubricVersion": "0.9.0",
+    "rubricVersion": "0.10.0",
     "items": 337,
-    "falsePositives": 0,
-    "fpRate": 0,
+    "falsePositives": 2,
+    "fpRate": 0.0059,
     "fpRate95ci": {
-      "lo": 0,
-      "hi": 0.0113
+      "lo": 0.0016,
+      "hi": 0.0214
     },
     "byKind": {
       "cache-invalidation": {
@@ -49,7 +49,7 @@
       },
       "tool-call": {
         "n": 20,
-        "fp": 0
+        "fp": 1
       },
       "tool-call-sequence": {
         "n": 8,
@@ -61,10 +61,10 @@
       },
       "tool-result": {
         "n": 24,
-        "fp": 0
+        "fp": 1
       }
     },
-    "measuredAt": "2026-10-16T04:07:46.300Z"
+    "measuredAt": "2026-10-27T16:35:28.688Z"
   },
   "items": [
     {
@@ -76,7 +76,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -88,7 +88,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -100,7 +100,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -112,7 +112,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -124,7 +124,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -136,7 +136,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -148,7 +148,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -160,7 +160,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -172,7 +172,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -184,7 +184,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -196,7 +196,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -208,7 +208,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -220,7 +220,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -232,7 +232,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -244,7 +244,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -256,7 +256,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -268,7 +268,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -280,7 +280,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -292,7 +292,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -304,7 +304,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -316,7 +316,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -328,7 +328,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -340,7 +340,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -352,7 +352,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -364,7 +364,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -376,7 +376,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -388,7 +388,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -400,7 +400,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -412,7 +412,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -424,7 +424,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -432,11 +432,11 @@
       "kind": "tool-call",
       "source": null,
       "hardNegative": true,
-      "falsePositive": false,
+      "falsePositive": true,
       "verdict": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "deny: Environment file access blocked"
       }
     },
     {
@@ -448,7 +448,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -460,7 +460,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -472,7 +472,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -484,7 +484,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -496,7 +496,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -508,7 +508,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -520,7 +520,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -532,7 +532,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -544,7 +544,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -556,7 +556,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -568,7 +568,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -580,7 +580,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -592,7 +592,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -604,7 +604,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -616,7 +616,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -628,7 +628,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -640,7 +640,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -652,7 +652,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -664,7 +664,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -676,7 +676,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -688,7 +688,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -700,7 +700,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -712,7 +712,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -724,7 +724,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -736,7 +736,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -748,7 +748,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -764,7 +764,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -780,7 +780,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -796,7 +796,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -812,7 +812,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -828,7 +828,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -844,7 +844,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -860,7 +860,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -876,7 +876,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -892,7 +892,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -908,7 +908,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -924,7 +924,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -940,7 +940,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -956,7 +956,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -972,7 +972,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -988,7 +988,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1004,7 +1004,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1020,7 +1020,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1036,7 +1036,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1052,7 +1052,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1068,7 +1068,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1084,7 +1084,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1100,7 +1100,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1116,7 +1116,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1132,7 +1132,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1148,7 +1148,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1164,7 +1164,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1180,7 +1180,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1196,7 +1196,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1212,7 +1212,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1228,7 +1228,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1244,7 +1244,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1260,7 +1260,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1276,7 +1276,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1292,7 +1292,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1308,7 +1308,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1324,7 +1324,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1340,7 +1340,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1356,7 +1356,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1372,7 +1372,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1388,7 +1388,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1404,7 +1404,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1420,7 +1420,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1436,7 +1436,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1452,7 +1452,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1468,7 +1468,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1484,7 +1484,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1500,7 +1500,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1516,7 +1516,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1532,7 +1532,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1548,7 +1548,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1564,7 +1564,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1580,7 +1580,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1596,7 +1596,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1612,7 +1612,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1628,7 +1628,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1644,7 +1644,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1660,7 +1660,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1676,7 +1676,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1692,7 +1692,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1708,7 +1708,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1724,7 +1724,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1740,7 +1740,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1756,7 +1756,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1772,7 +1772,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1788,7 +1788,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1804,7 +1804,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1820,7 +1820,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1836,7 +1836,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1852,7 +1852,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1868,7 +1868,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1884,7 +1884,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1900,7 +1900,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1916,7 +1916,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1932,7 +1932,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1948,7 +1948,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1964,7 +1964,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1980,7 +1980,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -1996,7 +1996,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2012,7 +2012,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2028,7 +2028,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2044,7 +2044,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2060,7 +2060,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2076,7 +2076,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2092,7 +2092,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2108,7 +2108,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2124,7 +2124,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2140,7 +2140,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2156,7 +2156,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2172,7 +2172,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2188,7 +2188,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2204,7 +2204,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2220,7 +2220,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2236,7 +2236,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2252,7 +2252,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2268,7 +2268,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2284,7 +2284,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2300,7 +2300,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2316,7 +2316,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2332,7 +2332,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2348,7 +2348,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2364,7 +2364,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2380,7 +2380,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2396,7 +2396,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2412,7 +2412,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2428,7 +2428,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2444,7 +2444,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2460,7 +2460,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2476,7 +2476,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2492,7 +2492,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2508,7 +2508,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2524,7 +2524,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2540,7 +2540,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2556,7 +2556,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2572,7 +2572,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2588,7 +2588,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2604,7 +2604,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2620,7 +2620,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2636,7 +2636,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2652,7 +2652,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2668,7 +2668,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2684,7 +2684,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2700,7 +2700,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2716,7 +2716,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2732,7 +2732,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2748,7 +2748,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2764,7 +2764,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2780,7 +2780,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2796,7 +2796,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2812,7 +2812,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2828,7 +2828,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2844,7 +2844,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2860,7 +2860,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2876,7 +2876,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2892,7 +2892,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2908,7 +2908,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2924,7 +2924,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2940,7 +2940,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2956,7 +2956,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2972,7 +2972,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -2988,7 +2988,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3004,7 +3004,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3020,7 +3020,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3036,7 +3036,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3052,7 +3052,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3068,7 +3068,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3084,7 +3084,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3100,7 +3100,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3116,7 +3116,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3132,7 +3132,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3148,7 +3148,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3164,7 +3164,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3180,7 +3180,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3196,7 +3196,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3212,7 +3212,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3228,7 +3228,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3244,7 +3244,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3260,7 +3260,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3276,7 +3276,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3292,7 +3292,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3308,7 +3308,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3324,7 +3324,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3340,7 +3340,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3356,7 +3356,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3372,7 +3372,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3388,7 +3388,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3404,7 +3404,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3420,7 +3420,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3436,7 +3436,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3452,7 +3452,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3468,7 +3468,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3484,7 +3484,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3500,7 +3500,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3516,7 +3516,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3532,7 +3532,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3548,7 +3548,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3564,7 +3564,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3580,7 +3580,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3596,7 +3596,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3612,7 +3612,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3628,7 +3628,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3644,7 +3644,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3660,7 +3660,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3676,7 +3676,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3692,7 +3692,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3708,7 +3708,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3724,7 +3724,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3740,7 +3740,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3756,7 +3756,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3772,7 +3772,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3788,7 +3788,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3804,7 +3804,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3820,7 +3820,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3836,7 +3836,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3852,7 +3852,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3868,7 +3868,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3884,7 +3884,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3900,7 +3900,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3916,7 +3916,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3932,7 +3932,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3948,7 +3948,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3964,7 +3964,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3980,7 +3980,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -3996,7 +3996,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4012,7 +4012,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4028,7 +4028,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4044,7 +4044,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4060,7 +4060,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4076,7 +4076,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4092,7 +4092,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4108,7 +4108,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4124,7 +4124,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4140,7 +4140,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4156,7 +4156,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4172,7 +4172,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4188,7 +4188,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4204,7 +4204,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4220,7 +4220,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4236,7 +4236,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4252,7 +4252,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4268,7 +4268,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4284,7 +4284,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4300,7 +4300,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4316,7 +4316,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4332,7 +4332,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4348,7 +4348,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4364,7 +4364,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4380,7 +4380,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4396,7 +4396,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4412,7 +4412,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4428,7 +4428,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4444,7 +4444,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4460,7 +4460,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4476,7 +4476,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4492,7 +4492,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4508,7 +4508,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4524,7 +4524,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4540,7 +4540,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4556,7 +4556,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4572,7 +4572,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4588,7 +4588,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4604,7 +4604,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4620,7 +4620,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4636,7 +4636,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4652,7 +4652,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4668,7 +4668,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4684,7 +4684,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4700,7 +4700,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4716,7 +4716,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4732,7 +4732,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4748,7 +4748,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4764,7 +4764,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4780,7 +4780,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4796,7 +4796,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4812,7 +4812,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4828,7 +4828,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4844,7 +4844,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4856,7 +4856,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4868,7 +4868,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4880,7 +4880,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4892,7 +4892,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4904,7 +4904,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4916,7 +4916,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4928,7 +4928,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4940,7 +4940,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4952,7 +4952,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4964,7 +4964,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4976,7 +4976,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -4988,7 +4988,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -5000,7 +5000,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -5008,11 +5008,11 @@
       "kind": "tool-result",
       "source": null,
       "hardNegative": true,
-      "falsePositive": false,
+      "falsePositive": true,
       "verdict": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "Secrets detected and handled: Database URL (critical)"
       }
     },
     {
@@ -5024,7 +5024,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -5036,7 +5036,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -5048,7 +5048,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -5060,7 +5060,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -5072,7 +5072,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -5084,7 +5084,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -5096,7 +5096,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -5108,7 +5108,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -5120,7 +5120,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     },
     {
@@ -5132,7 +5132,7 @@
       "verdict": {
         "detect": false,
         "enforce": false,
-        "signal": "no protection"
+        "signal": null
       }
     }
   ]

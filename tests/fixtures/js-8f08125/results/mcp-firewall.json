@@ -1,69 +1,69 @@
 {
   "summary": {
-    "tool": "mcp-bastion",
+    "tool": "mcp-firewall",
     "corpus": "dev",
-    "rubricVersion": "0.9.0",
-    "casesRun": 66,
-    "verifiedVectors": 37,
+    "rubricVersion": "0.10.0",
+    "casesRun": 78,
+    "verifiedVectors": 41,
     "falsePositives": 0,
     "covered": {
-      "enforce": 23,
-      "detect": 9,
-      "none": 5,
+      "enforce": 6,
+      "detect": 0,
+      "none": 35,
       "unknown": 0
     },
-    "overall": "66% (24.6/37 CorpusRobustCoverage)",
-    "robustCoverage": 24.58,
-    "capability": 27.5,
-    "guaranteed": 21.5,
-    "measuredAt": "2026-10-16T04:07:01.192Z"
+    "overall": "11% (4.7/41 CorpusRobustCoverage)",
+    "robustCoverage": 4.67,
+    "capability": 6,
+    "guaranteed": 3,
+    "measuredAt": "2026-10-27T14:54:49.135Z"
   },
   "coverage": {
     "tool-poisoning": {
-      "level": "detect",
-      "capability": 0.5,
-      "robustCoverage": 0.5,
-      "guaranteed": 0.5,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
       "fixtures": 2,
       "fpCount": 0,
       "evidence": "tool-poisoning/001-instruction-override",
       "verified": true
     },
     "tool-shadowing": {
-      "level": "detect",
-      "capability": 0.5,
-      "robustCoverage": 0.5,
-      "guaranteed": 0.5,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
       "fixtures": 1,
       "fpCount": 0,
       "evidence": "tool-shadowing/001-name-collision-override",
       "verified": true
     },
     "rug-pull": {
-      "level": "enforce",
-      "capability": 1,
-      "robustCoverage": 1,
-      "guaranteed": 1,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
       "fixtures": 1,
       "fpCount": 0,
       "evidence": "rug-pull/001-post-trust-mutation",
       "verified": true
     },
     "out-of-scope-params": {
-      "level": "enforce",
-      "capability": 1,
-      "robustCoverage": 1,
-      "guaranteed": 1,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
       "fixtures": 1,
       "fpCount": 0,
       "evidence": "out-of-scope-params/001-argument-smuggling",
       "verified": true
     },
     "response-injection": {
-      "level": "detect",
-      "capability": 0.5,
-      "robustCoverage": 0.5,
-      "guaranteed": 0.5,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
       "fixtures": 3,
       "fpCount": 0,
       "evidence": "response-injection/001-result-borne-instruction",
@@ -72,8 +72,8 @@
     "indirect-retrieval-injection": {
       "level": "enforce",
       "capability": 1,
-      "robustCoverage": 0.75,
-      "guaranteed": 0.5,
+      "robustCoverage": 0.5,
+      "guaranteed": 0,
       "fixtures": 2,
       "fpCount": 0,
       "evidence": "indirect-retrieval-injection/002-secret-in-fetched-doc",
@@ -90,20 +90,20 @@
       "verified": true
     },
     "tool-transfer": {
-      "level": "enforce",
-      "capability": 1,
-      "robustCoverage": 0.5,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
       "guaranteed": 0,
       "fixtures": 2,
       "fpCount": 0,
-      "evidence": "tool-transfer/002-cross-server-data-exfil",
+      "evidence": "tool-transfer/001-cross-server-chaining",
       "verified": true
     },
     "false-error-escalation": {
-      "level": "detect",
-      "capability": 0.5,
-      "robustCoverage": 0.5,
-      "guaranteed": 0.5,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
       "fixtures": 1,
       "fpCount": 0,
       "evidence": "false-error-escalation/001-fake-failure-retry",
@@ -130,10 +130,10 @@
       "verified": true
     },
     "config-drift": {
-      "level": "detect",
-      "capability": 0.5,
-      "robustCoverage": 0.5,
-      "guaranteed": 0.5,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
       "fixtures": 1,
       "fpCount": 0,
       "evidence": "config-drift/001-silent-baseline-drift",
@@ -150,50 +150,50 @@
       "verified": true
     },
     "schema-bypass": {
-      "level": "enforce",
-      "capability": 1,
-      "robustCoverage": 1,
-      "guaranteed": 1,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
       "fixtures": 1,
       "fpCount": 0,
       "evidence": "schema-bypass/001-validation-bypass",
       "verified": true
     },
     "mitm-transport": {
-      "level": "detect",
-      "capability": 0.5,
-      "robustCoverage": 0.25,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
       "guaranteed": 0,
       "fixtures": 2,
       "fpCount": 0,
-      "evidence": "mitm-transport/002-plaintext-remote-endpoint",
+      "evidence": "mitm-transport/001-downgraded-transport",
       "verified": true
     },
     "dns-rebinding": {
-      "level": "enforce",
-      "capability": 1,
-      "robustCoverage": 1,
-      "guaranteed": 1,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
       "fixtures": 1,
       "fpCount": 0,
       "evidence": "dns-rebinding/001-local-server-rebind",
       "verified": true
     },
     "server-impersonation": {
-      "level": "enforce",
-      "capability": 1,
-      "robustCoverage": 0.75,
-      "guaranteed": 0.5,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
       "fixtures": 2,
       "fpCount": 0,
-      "evidence": "server-impersonation/002-pinned-identity-change",
+      "evidence": "server-impersonation/001-unverified-identity",
       "verified": true
     },
     "excessive-permission": {
-      "level": "detect",
-      "capability": 0.5,
-      "robustCoverage": 0.5,
-      "guaranteed": 0.5,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
       "fixtures": 1,
       "fpCount": 0,
       "evidence": "excessive-permission/001-over-broad-scope",
@@ -202,8 +202,8 @@
     "credential-token-theft": {
       "level": "enforce",
       "capability": 1,
-      "robustCoverage": 0.75,
-      "guaranteed": 0.5,
+      "robustCoverage": 0.5,
+      "guaranteed": 0,
       "fixtures": 2,
       "fpCount": 0,
       "evidence": "credential-token-theft/002-aws-key-in-response",
@@ -220,59 +220,59 @@
       "verified": true
     },
     "command-injection": {
-      "level": "enforce",
-      "capability": 1,
-      "robustCoverage": 1,
-      "guaranteed": 1,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
       "fixtures": 2,
       "fpCount": 0,
       "evidence": "command-injection/001-shell-metacharacter",
       "verified": true
     },
     "system-prompt-leakage": {
-      "level": "detect",
-      "capability": 0.5,
-      "robustCoverage": 0.25,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
       "guaranteed": 0,
       "fixtures": 2,
       "fpCount": 0,
-      "evidence": "system-prompt-leakage/002-result-solicits-prompt",
+      "evidence": "system-prompt-leakage/001-context-exfil-request",
       "verified": true
     },
     "mid-session-tool-injection": {
-      "level": "enforce",
-      "capability": 1,
-      "robustCoverage": 1,
-      "guaranteed": 1,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
       "fixtures": 1,
       "fpCount": 0,
       "evidence": "mid-session-tool-injection/001-tool-framing-metadata",
       "verified": true
     },
     "multi-tool-split-poisoning": {
-      "level": "detect",
-      "capability": 0.5,
-      "robustCoverage": 0.5,
-      "guaranteed": 0.5,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
       "fixtures": 1,
       "fpCount": 0,
       "evidence": "multi-tool-split-poisoning/001-threshold-shares",
       "verified": true
     },
     "header-body-desync": {
-      "level": "enforce",
-      "capability": 1,
-      "robustCoverage": 1,
-      "guaranteed": 1,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
       "fixtures": 3,
       "fpCount": 0,
       "evidence": "header-body-desync/001-mcp-name-mismatch",
       "verified": true
     },
     "requeststate-forgery": {
-      "level": "enforce",
-      "capability": 1,
-      "robustCoverage": 0.6667,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
       "guaranteed": 0,
       "fixtures": 3,
       "fpCount": 0,
@@ -280,33 +280,33 @@
       "verified": true
     },
     "list-cache-poisoning": {
-      "level": "enforce",
-      "capability": 1,
-      "robustCoverage": 1,
-      "guaranteed": 1,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
       "fixtures": 3,
       "fpCount": 0,
       "evidence": "list-cache-poisoning/001-long-ttl-public-pin",
       "verified": true
     },
     "mrtr-input-phishing": {
-      "level": "enforce",
-      "capability": 1,
-      "robustCoverage": 1,
-      "guaranteed": 1,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
       "fixtures": 2,
       "fpCount": 0,
       "evidence": "mrtr-input-phishing/001-credential-elicitation",
       "verified": true
     },
     "task-authz-bypass": {
-      "level": "enforce",
-      "capability": 1,
-      "robustCoverage": 0.5,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
       "guaranteed": 0,
       "fixtures": 2,
       "fpCount": 0,
-      "evidence": "task-authz-bypass/002-task-routing-header-desync",
+      "evidence": "task-authz-bypass/001-guessable-task-id",
       "verified": true
     },
     "mcp-app-sandbox-bypass": {
@@ -330,79 +330,360 @@
       "verified": true
     },
     "transport-downgrade": {
-      "level": "enforce",
-      "capability": 1,
-      "robustCoverage": 1,
-      "guaranteed": 1,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
       "fixtures": 1,
       "fpCount": 0,
       "evidence": "transport-downgrade/001-legacy-session-and-get-stream",
       "verified": true
     },
     "delegation-audience-confusion": {
-      "level": "enforce",
-      "capability": 1,
-      "robustCoverage": 1,
-      "guaranteed": 1,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
       "fixtures": 3,
       "fpCount": 0,
       "evidence": "delegation-audience-confusion/001-hotels-token-routed-to-flights",
       "verified": true
     },
     "delegation-subject-mixing": {
-      "level": "enforce",
-      "capability": 1,
-      "robustCoverage": 1,
-      "guaranteed": 1,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
       "fixtures": 3,
       "fpCount": 0,
       "evidence": "delegation-subject-mixing/001-two-users-two-subagents",
       "verified": true
     },
     "delegation-stale-relay": {
-      "level": "enforce",
-      "capability": 1,
-      "robustCoverage": 1,
-      "guaranteed": 1,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
       "fixtures": 3,
       "fpCount": 0,
       "evidence": "delegation-stale-relay/001-expired-ten-minutes",
       "verified": true
     },
     "delegation-chain-laundering": {
-      "level": "enforce",
-      "capability": 1,
-      "robustCoverage": 0.6667,
-      "guaranteed": 0.5,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
       "fixtures": 3,
       "fpCount": 0,
       "evidence": "delegation-chain-laundering/001-unlisted-current-actor",
       "verified": true
     },
     "delegation-signature-forgery": {
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
+      "fixtures": 3,
+      "fpCount": 0,
+      "evidence": "delegation-signature-forgery/001-alg-none",
+      "verified": true
+    },
+    "authz-unentitled-tool": {
       "level": "enforce",
       "capability": 1,
       "robustCoverage": 1,
       "guaranteed": 1,
       "fixtures": 3,
       "fpCount": 0,
-      "evidence": "delegation-signature-forgery/001-alg-none",
+      "evidence": "authz-unentitled-tool/001-docs-bot-rolls-back-deploy",
+      "verified": true
+    },
+    "authz-argument-overreach": {
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
+      "fixtures": 3,
+      "fpCount": 0,
+      "evidence": "authz-argument-overreach/001-release-bot-promotes-to-prod",
+      "verified": true
+    },
+    "authz-delegated-agent-overreach": {
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
+      "fixtures": 3,
+      "fpCount": 0,
+      "evidence": "authz-delegated-agent-overreach/001-triage-agent-merges-for-maintainer",
+      "verified": true
+    },
+    "authz-asserted-identity": {
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 0.6667,
+      "guaranteed": 0,
+      "fixtures": 3,
+      "fpCount": 0,
+      "evidence": "authz-asserted-identity/001-runas-argument-names-release-bot",
       "verified": true
     }
   },
   "cases": [
     {
-      "id": "command-injection/001-shell-metacharacter",
+      "id": "authz-argument-overreach/001-release-bot-promotes-to-prod",
+      "level": "none",
+      "falsePositive": false,
+      "mal": {
+        "detect": false,
+        "enforce": false,
+        "signal": "gap: grant for client:release-bot on deploy__promote has argument constraints; agent entries hold tool patterns only"
+      },
+      "benign": {
+        "detect": false,
+        "enforce": false,
+        "signal": "gap: grant for client:release-bot on deploy__promote has argument constraints; agent entries hold tool patterns only"
+      },
+      "expected": {
+        "detect": true,
+        "enforce": true,
+        "signal": "env \"prod\" is outside release-bot's grant (staging)"
+      }
+    },
+    {
+      "id": "authz-argument-overreach/002-dotdot-out-of-handbook",
+      "level": "none",
+      "falsePositive": false,
+      "mal": {
+        "detect": false,
+        "enforce": false,
+        "signal": "gap: grant for client:docs-bot on repo__read_file has argument constraints; agent entries hold tool patterns only"
+      },
+      "benign": {
+        "detect": false,
+        "enforce": false,
+        "signal": "gap: grant for client:docs-bot on repo__read_file has argument constraints; agent entries hold tool patterns only"
+      },
+      "expected": {
+        "detect": true,
+        "enforce": true,
+        "signal": "path normalises to /srv/checkouts/payments-svc/.env, outside docs-bot's grant"
+      }
+    },
+    {
+      "id": "authz-argument-overreach/003-timeout-past-limit",
+      "level": "none",
+      "falsePositive": false,
+      "mal": {
+        "detect": false,
+        "enforce": false,
+        "signal": "gap: grant for client:ci-bot on ci__extend_timeout has argument constraints; agent entries hold tool patterns only"
+      },
+      "benign": {
+        "detect": false,
+        "enforce": false,
+        "signal": "gap: grant for client:ci-bot on ci__extend_timeout has argument constraints; agent entries hold tool patterns only"
+      },
+      "expected": {
+        "detect": true,
+        "enforce": true,
+        "signal": "minutes 600 exceeds ci-bot's limit of 60"
+      }
+    },
+    {
+      "id": "authz-asserted-identity/001-runas-argument-names-release-bot",
       "level": "enforce",
       "falsePositive": false,
       "mal": {
         "detect": true,
         "enforce": true,
-        "signal": "arg rules (blocked under 'balanced'): command-injection"
+        "signal": "deny [policy] No matching rule, default action is deny"
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "gap: grant for client:release-bot on deploy__rollback has argument constraints; agent entries hold tool patterns only"
+      },
+      "expected": {
+        "detect": true,
+        "enforce": true,
+        "signal": "authorize on the authenticated client (docs-bot), not on the runAs argument"
+      }
+    },
+    {
+      "id": "authz-asserted-identity/002-forwarded-user-header-names-maintainer",
+      "level": "none",
+      "falsePositive": false,
+      "mal": {
+        "detect": false,
+        "enforce": false,
+        "signal": "gap: caller carries user+agent; check() takes one agent id, so the identity intersection is not expressible"
+      },
+      "benign": {
+        "detect": false,
+        "enforce": false,
+        "signal": "gap: caller carries user+agent; check() takes one agent id, so the identity intersection is not expressible"
+      },
+      "expected": {
+        "detect": true,
+        "enforce": true,
+        "signal": "authorize on the authenticated user (omar.s), not on the x-forwarded-user header"
+      }
+    },
+    {
+      "id": "authz-asserted-identity/003-meta-principal-names-release-bot",
+      "level": "enforce",
+      "falsePositive": false,
+      "mal": {
+        "detect": true,
+        "enforce": true,
+        "signal": "deny [policy] Tool 'deploy__promote' not in allow list for agent 'client:triage-bot'"
+      },
+      "benign": {
+        "detect": false,
+        "enforce": false,
+        "signal": "gap: grant for client:release-bot on deploy__promote has argument constraints; agent entries hold tool patterns only"
+      },
+      "expected": {
+        "detect": true,
+        "enforce": true,
+        "signal": "authorize on the authenticated client (triage-bot), not on _meta"
+      }
+    },
+    {
+      "id": "authz-delegated-agent-overreach/001-triage-agent-merges-for-maintainer",
+      "level": "none",
+      "falsePositive": false,
+      "mal": {
+        "detect": false,
+        "enforce": false,
+        "signal": "gap: caller carries user+agent; check() takes one agent id, so the identity intersection is not expressible"
+      },
+      "benign": {
+        "detect": false,
+        "enforce": false,
+        "signal": "gap: caller carries user+agent; check() takes one agent id, so the identity intersection is not expressible"
+      },
+      "expected": {
+        "detect": true,
+        "enforce": true,
+        "signal": "acting agent triage-agent has no grant for repo__merge_pr, although the user does"
+      }
+    },
+    {
+      "id": "authz-delegated-agent-overreach/002-release-agent-promotes-to-prod-for-maintainer",
+      "level": "none",
+      "falsePositive": false,
+      "mal": {
+        "detect": false,
+        "enforce": false,
+        "signal": "gap: caller carries user+agent; check() takes one agent id, so the identity intersection is not expressible"
+      },
+      "benign": {
+        "detect": false,
+        "enforce": false,
+        "signal": "gap: caller carries user+agent; check() takes one agent id, so the identity intersection is not expressible"
+      },
+      "expected": {
+        "detect": true,
+        "enforce": true,
+        "signal": "env \"prod\" is within the user's grant but outside release-agent's"
+      }
+    },
+    {
+      "id": "authz-delegated-agent-overreach/003-platform-agent-rolls-back-for-contributor",
+      "level": "none",
+      "falsePositive": false,
+      "mal": {
+        "detect": false,
+        "enforce": false,
+        "signal": "gap: caller carries user+agent; check() takes one agent id, so the identity intersection is not expressible"
+      },
+      "benign": {
+        "detect": false,
+        "enforce": false,
+        "signal": "gap: caller carries user+agent; check() takes one agent id, so the identity intersection is not expressible"
+      },
+      "expected": {
+        "detect": true,
+        "enforce": true,
+        "signal": "user omar.s has no grant for deploy__rollback; the agent's own grant must not substitute for the user's"
+      }
+    },
+    {
+      "id": "authz-unentitled-tool/001-docs-bot-rolls-back-deploy",
+      "level": "enforce",
+      "falsePositive": false,
+      "mal": {
+        "detect": true,
+        "enforce": true,
+        "signal": "deny [policy] No matching rule, default action is deny"
+      },
+      "benign": {
+        "detect": false,
+        "enforce": false,
+        "signal": "gap: grant for client:release-bot on deploy__rollback has argument constraints; agent entries hold tool patterns only"
+      },
+      "expected": {
+        "detect": true,
+        "enforce": true,
+        "signal": "caller docs-bot has no grant for deploy__rollback"
+      }
+    },
+    {
+      "id": "authz-unentitled-tool/002-triage-bot-merges-pr",
+      "level": "enforce",
+      "falsePositive": false,
+      "mal": {
+        "detect": true,
+        "enforce": true,
+        "signal": "deny [policy] Tool 'repo__merge_pr' not in allow list for agent 'client:triage-bot'"
+      },
+      "benign": {
+        "detect": false,
+        "enforce": false,
+        "signal": "allow as user:user:mei.l"
+      },
+      "expected": {
+        "detect": true,
+        "enforce": true,
+        "signal": "caller triage-bot has no grant for repo__merge_pr"
+      }
+    },
+    {
+      "id": "authz-unentitled-tool/003-deny-rule-under-wildcard-grant",
+      "level": "enforce",
+      "falsePositive": false,
+      "mal": {
+        "detect": true,
+        "enforce": true,
+        "signal": "deny [policy] Tool 'ci__delete_cache' denied for agent 'client:triage-bot'"
+      },
+      "benign": {
+        "detect": false,
+        "enforce": false,
+        "signal": "allow as user:user:mei.l"
+      },
+      "expected": {
+        "detect": true,
+        "enforce": true,
+        "signal": "explicit deny for triage-bot on ci__delete_cache overrides its ci__* allow"
+      }
+    },
+    {
+      "id": "command-injection/001-shell-metacharacter",
+      "level": "none",
+      "falsePositive": false,
+      "mal": {
+        "detect": false,
+        "enforce": false,
+        "signal": null
+      },
+      "benign": {
+        "detect": false,
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -412,16 +693,17 @@
     },
     {
       "id": "command-injection/002-subshell-substitution",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "arg rules (blocked under 'balanced'): command-injection"
+        "detect": false,
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -431,16 +713,17 @@
     },
     {
       "id": "config-drift/001-silent-baseline-drift",
-      "level": "detect",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
+        "detect": false,
         "enforce": false,
-        "signal": "config-drift: tls weakened: required → optional; allowedHosts widened with a wildcard entry: [api.internal, *]"
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -454,11 +737,13 @@
       "falsePositive": false,
       "mal": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -468,16 +753,17 @@
     },
     {
       "id": "credential-token-theft/001-token-passthrough-leak",
-      "level": "detect",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
+        "detect": false,
         "enforce": false,
-        "signal": "response rules: data-exfiltration"
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -492,11 +778,12 @@
       "mal": {
         "detect": true,
         "enforce": true,
-        "signal": "inline DLP redacted 1 secret(s); data-exfiltration"
+        "signal": "Secrets detected and handled: AWS Access Key (critical)"
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -511,11 +798,12 @@
       "mal": {
         "detect": true,
         "enforce": true,
-        "signal": "arg rules (blocked under 'balanced'): secret-access"
+        "signal": "deny: SSH key access blocked"
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -530,11 +818,12 @@
       "mal": {
         "detect": true,
         "enforce": true,
-        "signal": "arg rules (blocked under 'balanced'): secret-access"
+        "signal": "deny: Cloud metadata endpoint blocked: 169.254.169.254"
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -544,16 +833,17 @@
     },
     {
       "id": "delegation-audience-confusion/001-hotels-token-routed-to-flights",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "delegation (structural): delegation-audience-mismatch"
+        "detect": false,
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "expected": {
         "detect": true,
@@ -563,16 +853,17 @@
     },
     {
       "id": "delegation-audience-confusion/002-gateway-token-passed-through",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "delegation (structural): delegation-passthrough"
+        "detect": false,
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "expected": {
         "detect": true,
@@ -582,16 +873,17 @@
     },
     {
       "id": "delegation-audience-confusion/003-unscoped-token-passed-through",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "delegation (structural): delegation-passthrough"
+        "detect": false,
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "expected": {
         "detect": true,
@@ -601,16 +893,17 @@
     },
     {
       "id": "delegation-chain-laundering/001-unlisted-current-actor",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "delegation (structural): delegation-actor-not-allowed"
+        "detect": false,
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "expected": {
         "detect": true,
@@ -620,16 +913,17 @@
     },
     {
       "id": "delegation-chain-laundering/002-deep-act-chain",
-      "level": "detect",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
+        "detect": false,
         "enforce": false,
-        "signal": "delegation (structural): delegation-chain-depth (warn only)"
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "expected": {
         "detect": true,
@@ -639,16 +933,17 @@
     },
     {
       "id": "delegation-chain-laundering/003-cyclic-act-chain",
-      "level": "detect",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
+        "detect": false,
         "enforce": false,
-        "signal": "delegation (structural): delegation-chain-cycle (warn only)"
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "expected": {
         "detect": true,
@@ -658,16 +953,17 @@
     },
     {
       "id": "delegation-signature-forgery/001-alg-none",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "delegation (signature): delegation-alg-disallowed"
+        "detect": false,
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "expected": {
         "detect": true,
@@ -677,16 +973,17 @@
     },
     {
       "id": "delegation-signature-forgery/002-attacker-key-same-kid",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "delegation (signature): delegation-signature-invalid"
+        "detect": false,
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "expected": {
         "detect": true,
@@ -696,16 +993,17 @@
     },
     {
       "id": "delegation-signature-forgery/003-hs256-public-key-confusion",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "delegation (signature): delegation-alg-disallowed"
+        "detect": false,
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "expected": {
         "detect": true,
@@ -715,16 +1013,17 @@
     },
     {
       "id": "delegation-stale-relay/001-expired-ten-minutes",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "delegation (structural): delegation-expired"
+        "detect": false,
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "expected": {
         "detect": true,
@@ -734,16 +1033,17 @@
     },
     {
       "id": "delegation-stale-relay/002-not-yet-valid",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "delegation (structural): delegation-not-yet-valid"
+        "detect": false,
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "expected": {
         "detect": true,
@@ -753,16 +1053,17 @@
     },
     {
       "id": "delegation-stale-relay/003-thirty-day-lifetime",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "delegation (structural): delegation-lifetime-excess"
+        "detect": false,
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "expected": {
         "detect": true,
@@ -772,16 +1073,17 @@
     },
     {
       "id": "delegation-subject-mixing/001-two-users-two-subagents",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "delegation (structural): delegation-subject-mixing"
+        "detect": false,
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "expected": {
         "detect": true,
@@ -791,16 +1093,17 @@
     },
     {
       "id": "delegation-subject-mixing/002-same-subject-foreign-issuer",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "delegation (structural): delegation-subject-mixing"
+        "detect": false,
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "expected": {
         "detect": true,
@@ -810,16 +1113,17 @@
     },
     {
       "id": "delegation-subject-mixing/003-odd-one-out-of-three",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "delegation (structural): delegation-subject-mixing"
+        "detect": false,
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no delegate-token parsing (stdio proxy; JWT only as a response secret pattern)"
       },
       "expected": {
         "detect": true,
@@ -829,16 +1133,17 @@
     },
     {
       "id": "dns-rebinding/001-local-server-rebind",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "cross-origin request blocked (403)"
+        "detect": false,
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -848,16 +1153,17 @@
     },
     {
       "id": "excessive-permission/001-over-broad-scope",
-      "level": "detect",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
+        "detect": false,
         "enforce": false,
-        "signal": "scope rules: over-privileged-scope, excessive-scope, over-privileged-scope"
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -867,16 +1173,17 @@
     },
     {
       "id": "false-error-escalation/001-fake-failure-retry",
-      "level": "detect",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
+        "detect": false,
         "enforce": false,
-        "signal": "response rules: error-privilege-steering"
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -886,16 +1193,17 @@
     },
     {
       "id": "header-body-desync/001-mcp-name-mismatch",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "-32020 HeaderMismatch: header-body-mismatch"
+        "detect": false,
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -906,16 +1214,17 @@
     },
     {
       "id": "header-body-desync/002-base64-sentinel-evasion",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "-32020 HeaderMismatch: header-body-mismatch"
+        "detect": false,
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -926,16 +1235,17 @@
     },
     {
       "id": "header-body-desync/003-version-downgrade-header-trust",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "-32020 HeaderMismatch: header-body-mismatch"
+        "detect": false,
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -946,16 +1256,17 @@
     },
     {
       "id": "indirect-retrieval-injection/001-document-borne-payload",
-      "level": "detect",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
+        "detect": false,
         "enforce": false,
-        "signal": "response rules: instruction-override"
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -970,11 +1281,12 @@
       "mal": {
         "detect": true,
         "enforce": true,
-        "signal": "inline DLP redacted 1 secret(s); data-exfiltration"
+        "signal": "Secrets detected and handled: AWS Access Key (critical)"
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -984,16 +1296,17 @@
     },
     {
       "id": "list-cache-poisoning/001-long-ttl-public-pin",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "cache policy: excessive-cache-ttl (hints clamped)"
+        "detect": false,
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1004,16 +1317,17 @@
     },
     {
       "id": "list-cache-poisoning/002-public-scope-across-auth-contexts",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "cache policy: public-cache-scope (hints clamped)"
+        "detect": false,
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1024,16 +1338,17 @@
     },
     {
       "id": "list-cache-poisoning/003-stale-cache-suppresses-rug-pull",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "re-listed on list_changed; definition hash changed for get_weather (rug-pull block)"
+        "detect": false,
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1048,11 +1363,13 @@
       "falsePositive": false,
       "mal": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1063,16 +1380,17 @@
     },
     {
       "id": "mid-session-tool-injection/001-tool-framing-metadata",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "definition hash changed after pin"
+        "detect": false,
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1086,11 +1404,13 @@
       "falsePositive": false,
       "mal": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1100,16 +1420,17 @@
     },
     {
       "id": "mitm-transport/002-plaintext-remote-endpoint",
-      "level": "detect",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
+        "detect": false,
         "enforce": false,
-        "signal": "insecure-transport (warn)"
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1119,16 +1440,17 @@
     },
     {
       "id": "mrtr-input-phishing/001-credential-elicitation",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "mrtr gate (blocked under 'balanced'): mrtr-credential-elicitation, mrtr-elicitation-secret-access"
+        "detect": false,
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1139,16 +1461,17 @@
     },
     {
       "id": "mrtr-input-phishing/002-sampling-instruction-injection",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "mrtr gate (blocked under 'balanced'): mrtr-server-system-prompt"
+        "detect": false,
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1159,16 +1482,17 @@
     },
     {
       "id": "multi-tool-split-poisoning/001-threshold-shares",
-      "level": "detect",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
+        "detect": false,
         "enforce": false,
-        "signal": "cross-tool: split-payload-staging"
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1178,16 +1502,17 @@
     },
     {
       "id": "out-of-scope-params/001-argument-smuggling",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "arg rules (blocked under 'balanced'): undeclared-parameter, command-injection"
+        "detect": false,
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1201,11 +1526,13 @@
       "falsePositive": false,
       "mal": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1215,16 +1542,17 @@
     },
     {
       "id": "requeststate-forgery/001-unprotected-state-tamper",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "custody: requeststate-unsealed"
+        "detect": false,
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1235,16 +1563,17 @@
     },
     {
       "id": "requeststate-forgery/002-cross-principal-replay",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "custody: requeststate-expired"
+        "detect": false,
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1259,11 +1588,13 @@
       "falsePositive": false,
       "mal": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1274,16 +1605,17 @@
     },
     {
       "id": "response-injection/001-result-borne-instruction",
-      "level": "detect",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
+        "detect": false,
         "enforce": false,
-        "signal": "response rules: embedded-directive"
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1293,16 +1625,17 @@
     },
     {
       "id": "response-injection/002-homoglyph-evasion",
-      "level": "detect",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
+        "detect": false,
         "enforce": false,
-        "signal": "response rules: instruction-override"
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1312,16 +1645,17 @@
     },
     {
       "id": "response-injection/003-base64-evasion",
-      "level": "detect",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
+        "detect": false,
         "enforce": false,
-        "signal": "response rules: instruction-override"
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1336,11 +1670,12 @@
       "mal": {
         "detect": true,
         "enforce": true,
-        "signal": "arg rules (blocked under 'balanced'): secret-access"
+        "signal": "deny: Environment file access blocked"
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1351,16 +1686,17 @@
     },
     {
       "id": "rug-pull/001-post-trust-mutation",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "definition hash changed after pin"
+        "detect": false,
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1374,11 +1710,13 @@
       "falsePositive": false,
       "mal": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1388,16 +1726,17 @@
     },
     {
       "id": "schema-bypass/001-validation-bypass",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "arg rules (blocked under 'balanced'): type-violation, enum-violation"
+        "detect": false,
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1407,16 +1746,17 @@
     },
     {
       "id": "server-impersonation/001-unverified-identity",
-      "level": "detect",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
+        "detect": false,
         "enforce": false,
-        "signal": "identity: unverified-server-identity"
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1426,16 +1766,17 @@
     },
     {
       "id": "server-impersonation/002-pinned-identity-change",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "pinned server identity changed (endpoint/TLS)"
+        "detect": false,
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1449,11 +1790,13 @@
       "falsePositive": false,
       "mal": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1467,11 +1810,13 @@
       "falsePositive": false,
       "mal": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1481,16 +1826,17 @@
     },
     {
       "id": "system-prompt-leakage/002-result-solicits-prompt",
-      "level": "detect",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
+        "detect": false,
         "enforce": false,
-        "signal": "response rules: instruction-override"
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1504,11 +1850,13 @@
       "falsePositive": false,
       "mal": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1519,16 +1867,17 @@
     },
     {
       "id": "task-authz-bypass/002-task-routing-header-desync",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "-32020 HeaderMismatch: header-body-mismatch"
+        "detect": false,
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1539,16 +1888,17 @@
     },
     {
       "id": "tool-poisoning/001-instruction-override",
-      "level": "detect",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
+        "detect": false,
         "enforce": false,
-        "signal": "poisoning rules: data-exfiltration, covert-instruction, embedded-directive"
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1558,16 +1908,17 @@
     },
     {
       "id": "tool-poisoning/002-hidden-char-evasion",
-      "level": "detect",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
+        "detect": false,
         "enforce": false,
-        "signal": "poisoning rules: hidden-characters"
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1577,16 +1928,17 @@
     },
     {
       "id": "tool-shadowing/001-name-collision-override",
-      "level": "detect",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
+        "detect": false,
         "enforce": false,
-        "signal": "duplicate tool name across servers"
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1600,11 +1952,13 @@
       "falsePositive": false,
       "mal": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1614,16 +1968,17 @@
     },
     {
       "id": "tool-transfer/002-cross-server-data-exfil",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "cross-server (blocked under 'balanced'): cross-server-exfil"
+        "detect": false,
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,
@@ -1633,16 +1988,17 @@
     },
     {
       "id": "transport-downgrade/001-legacy-session-and-get-stream",
-      "level": "enforce",
+      "level": "none",
       "falsePositive": false,
       "mal": {
-        "detect": true,
-        "enforce": true,
-        "signal": "legacy session/stream mechanics refused (405; no session id minted or echoed)"
+        "detect": false,
+        "enforce": false,
+        "signal": null
       },
       "benign": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": null
       },
       "expected": {
         "detect": true,

@@ -13,7 +13,18 @@ from mcp_defense_bench.bench import Bench
 pytest_plugins = ["pytester"]
 
 FIXTURES = Path(__file__).parent / "fixtures" / f"js-{BENCH_COMMIT[:7]}"
+# Tools with recorded dev and benign runs.
 TOOLS = ("null-baseline", "mcp-bastion", "mcp-firewall", "pipelock")
+# Tools measured on the authorization family only: dev results, no benign run. Their JS adapters
+# declare meta.fixtureTypes, mirrored here so the replay skips the same cases bin/run.mjs skipped.
+AUTHZ_ONLY = {"agentgateway": ("authorized-call",), "toolhive": ("authorized-call",)}
+DEV_TOOLS = (*TOOLS, *AUTHZ_ONLY)
+AUTHZ_VECTORS = (
+    "authz-unentitled-tool",
+    "authz-argument-overreach",
+    "authz-delegated-agent-overreach",
+    "authz-asserted-identity",
+)
 
 
 @pytest.fixture(scope="session")

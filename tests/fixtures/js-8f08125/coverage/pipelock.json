@@ -1,10 +1,10 @@
 {
-  "tool": "mcp-firewall",
-  "repo": "https://github.com/ressl/mcp-firewall",
-  "class": "runtime-proxy",
+  "tool": "pipelock",
+  "repo": "https://github.com/luckyPipewrench/pipelock",
+  "class": "egress-firewall",
   "reproducible": true,
   "version": "TBD",
-  "rubricVersion": "0.9.0",
+  "rubricVersion": "0.10.0",
   "measuredBy": "bin/run.mjs",
   "coverage": {
     "tool-poisoning": {
@@ -48,33 +48,33 @@
       "verified": true
     },
     "response-injection": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
+      "level": "detect",
+      "capability": 0.5,
+      "robustCoverage": 0.3333,
       "guaranteed": 0,
       "fixtures": 3,
       "fpCount": 0,
-      "evidence": "response-injection/001-result-borne-instruction",
+      "evidence": "response-injection/002-homoglyph-evasion",
       "verified": true
     },
     "indirect-retrieval-injection": {
+      "level": "detect",
+      "capability": 0.5,
+      "robustCoverage": 0.25,
+      "guaranteed": 0,
+      "fixtures": 2,
+      "fpCount": 0,
+      "evidence": "indirect-retrieval-injection/001-document-borne-payload",
+      "verified": true
+    },
+    "cross-tool-exfiltration": {
       "level": "enforce",
       "capability": 1,
       "robustCoverage": 0.5,
       "guaranteed": 0,
       "fixtures": 2,
       "fpCount": 0,
-      "evidence": "indirect-retrieval-injection/002-secret-in-fetched-doc",
-      "verified": true
-    },
-    "cross-tool-exfiltration": {
-      "level": "enforce",
-      "capability": 1,
-      "robustCoverage": 1,
-      "guaranteed": 1,
-      "fixtures": 2,
-      "fpCount": 0,
-      "evidence": "cross-tool-exfiltration/001-confused-deputy-chain",
+      "evidence": "cross-tool-exfiltration/002-cloud-metadata-egress",
       "verified": true
     },
     "tool-transfer": {
@@ -188,13 +188,13 @@
       "verified": true
     },
     "credential-token-theft": {
-      "level": "enforce",
-      "capability": 1,
-      "robustCoverage": 0.5,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
       "guaranteed": 0,
       "fixtures": 2,
       "fpCount": 0,
-      "evidence": "credential-token-theft/002-aws-key-in-response",
+      "evidence": "credential-token-theft/001-token-passthrough-leak",
       "verified": true
     },
     "consent-fatigue": {
@@ -218,13 +218,13 @@
       "verified": true
     },
     "system-prompt-leakage": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
+      "level": "detect",
+      "capability": 0.5,
+      "robustCoverage": 0.25,
       "guaranteed": 0,
       "fixtures": 2,
       "fpCount": 0,
-      "evidence": "system-prompt-leakage/001-context-exfil-request",
+      "evidence": "system-prompt-leakage/002-result-solicits-prompt",
       "verified": true
     },
     "mid-session-tool-injection": {
@@ -308,10 +308,10 @@
       "verified": true
     },
     "roots-scope-gap": {
-      "level": "enforce",
-      "capability": 1,
-      "robustCoverage": 1,
-      "guaranteed": 1,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
       "fixtures": 1,
       "fpCount": 0,
       "evidence": "roots-scope-gap/001-no-enforced-filesystem-boundary",
@@ -375,6 +375,46 @@
       "fixtures": 3,
       "fpCount": 0,
       "evidence": "delegation-signature-forgery/001-alg-none",
+      "verified": true
+    },
+    "authz-unentitled-tool": {
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
+      "fixtures": 3,
+      "fpCount": 0,
+      "evidence": "authz-unentitled-tool/001-docs-bot-rolls-back-deploy",
+      "verified": true
+    },
+    "authz-argument-overreach": {
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
+      "fixtures": 3,
+      "fpCount": 0,
+      "evidence": "authz-argument-overreach/001-release-bot-promotes-to-prod",
+      "verified": true
+    },
+    "authz-delegated-agent-overreach": {
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
+      "fixtures": 3,
+      "fpCount": 0,
+      "evidence": "authz-delegated-agent-overreach/001-triage-agent-merges-for-maintainer",
+      "verified": true
+    },
+    "authz-asserted-identity": {
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
+      "fixtures": 3,
+      "fpCount": 0,
+      "evidence": "authz-asserted-identity/001-runas-argument-names-release-bot",
       "verified": true
     }
   }

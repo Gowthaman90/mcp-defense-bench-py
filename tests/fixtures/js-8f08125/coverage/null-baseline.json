@@ -1,10 +1,10 @@
 {
-  "tool": "pipelock",
-  "repo": "https://github.com/luckyPipewrench/pipelock",
-  "class": "egress-firewall",
+  "tool": "null-baseline",
+  "repo": null,
+  "class": "none",
   "reproducible": true,
-  "version": "TBD",
-  "rubricVersion": "0.9.0",
+  "version": "n/a",
+  "rubricVersion": "0.10.0",
   "measuredBy": "bin/run.mjs",
   "coverage": {
     "tool-poisoning": {
@@ -48,19 +48,19 @@
       "verified": true
     },
     "response-injection": {
-      "level": "detect",
-      "capability": 0.5,
-      "robustCoverage": 0.3333,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
       "guaranteed": 0,
       "fixtures": 3,
       "fpCount": 0,
-      "evidence": "response-injection/002-homoglyph-evasion",
+      "evidence": "response-injection/001-result-borne-instruction",
       "verified": true
     },
     "indirect-retrieval-injection": {
-      "level": "detect",
-      "capability": 0.5,
-      "robustCoverage": 0.25,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
       "guaranteed": 0,
       "fixtures": 2,
       "fpCount": 0,
@@ -68,13 +68,13 @@
       "verified": true
     },
     "cross-tool-exfiltration": {
-      "level": "enforce",
-      "capability": 1,
-      "robustCoverage": 0.5,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
       "guaranteed": 0,
       "fixtures": 2,
       "fpCount": 0,
-      "evidence": "cross-tool-exfiltration/002-cloud-metadata-egress",
+      "evidence": "cross-tool-exfiltration/001-confused-deputy-chain",
       "verified": true
     },
     "tool-transfer": {
@@ -218,13 +218,13 @@
       "verified": true
     },
     "system-prompt-leakage": {
-      "level": "detect",
-      "capability": 0.5,
-      "robustCoverage": 0.25,
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
       "guaranteed": 0,
       "fixtures": 2,
       "fpCount": 0,
-      "evidence": "system-prompt-leakage/002-result-solicits-prompt",
+      "evidence": "system-prompt-leakage/001-context-exfil-request",
       "verified": true
     },
     "mid-session-tool-injection": {
@@ -375,6 +375,46 @@
       "fixtures": 3,
       "fpCount": 0,
       "evidence": "delegation-signature-forgery/001-alg-none",
+      "verified": true
+    },
+    "authz-unentitled-tool": {
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
+      "fixtures": 3,
+      "fpCount": 0,
+      "evidence": "authz-unentitled-tool/001-docs-bot-rolls-back-deploy",
+      "verified": true
+    },
+    "authz-argument-overreach": {
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
+      "fixtures": 3,
+      "fpCount": 0,
+      "evidence": "authz-argument-overreach/001-release-bot-promotes-to-prod",
+      "verified": true
+    },
+    "authz-delegated-agent-overreach": {
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
+      "fixtures": 3,
+      "fpCount": 0,
+      "evidence": "authz-delegated-agent-overreach/001-triage-agent-merges-for-maintainer",
+      "verified": true
+    },
+    "authz-asserted-identity": {
+      "level": "none",
+      "capability": 0,
+      "robustCoverage": 0,
+      "guaranteed": 0,
+      "fixtures": 3,
+      "fpCount": 0,
+      "evidence": "authz-asserted-identity/001-runas-argument-names-release-bot",
       "verified": true
     }
   }

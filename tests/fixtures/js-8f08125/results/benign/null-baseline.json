@@ -1,14 +1,14 @@
 {
   "summary": {
-    "tool": "pipelock",
+    "tool": "null-baseline",
     "corpus": "benign",
-    "rubricVersion": "0.9.0",
+    "rubricVersion": "0.10.0",
     "items": 337,
-    "falsePositives": 3,
-    "fpRate": 0.0089,
+    "falsePositives": 0,
+    "fpRate": 0,
     "fpRate95ci": {
-      "lo": 0.003,
-      "hi": 0.0258
+      "lo": 0,
+      "hi": 0.0113
     },
     "byKind": {
       "cache-invalidation": {
@@ -41,7 +41,7 @@
       },
       "scenario": {
         "n": 4,
-        "fp": 1
+        "fp": 0
       },
       "server-identity": {
         "n": 2,
@@ -61,10 +61,10 @@
       },
       "tool-result": {
         "n": 24,
-        "fp": 2
+        "fp": 0
       }
     },
-    "measuredAt": "2026-10-16T04:08:17.750Z"
+    "measuredAt": "2026-10-27T16:35:31.667Z"
   },
   "items": [
     {
@@ -75,7 +75,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -86,7 +87,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -97,7 +99,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -108,7 +111,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -119,7 +123,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -130,7 +135,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -141,7 +147,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -152,7 +159,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -163,7 +171,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -174,7 +183,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -185,7 +195,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -196,7 +207,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -207,7 +219,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -218,7 +231,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -229,7 +243,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -240,7 +255,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -251,7 +267,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -262,7 +279,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -273,7 +291,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -284,7 +303,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -295,7 +315,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -306,7 +327,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -317,7 +339,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -328,7 +351,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -339,7 +363,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -347,11 +372,11 @@
       "kind": "scenario",
       "source": null,
       "hardNegative": false,
-      "falsePositive": true,
+      "falsePositive": false,
       "verdict": {
-        "detect": true,
-        "enforce": true,
-        "signal": "core_ssrf: core SSRF: 127.0.0.1 is a private/internal IP address"
+        "detect": false,
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -362,7 +387,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -373,7 +399,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -384,7 +411,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -395,7 +423,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -406,7 +435,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -417,7 +447,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -428,7 +459,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -439,7 +471,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -450,7 +483,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -461,7 +495,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -472,7 +507,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -483,7 +519,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -494,7 +531,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -505,7 +543,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -516,7 +555,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -527,7 +567,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -538,7 +579,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -549,7 +591,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -560,7 +603,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -571,7 +615,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -582,7 +627,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -593,7 +639,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -604,7 +651,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -615,7 +663,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -626,7 +675,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -637,7 +687,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -648,7 +699,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -659,7 +711,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -670,7 +723,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -681,7 +735,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -692,7 +747,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -707,7 +763,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -722,7 +779,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -737,7 +795,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -752,7 +811,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -767,7 +827,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -782,7 +843,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -797,7 +859,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -812,7 +875,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -827,7 +891,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -842,7 +907,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -857,7 +923,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -872,7 +939,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -887,7 +955,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -902,7 +971,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -917,7 +987,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -932,7 +1003,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -947,7 +1019,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -962,7 +1035,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -977,7 +1051,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -992,7 +1067,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1007,7 +1083,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1022,7 +1099,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1037,7 +1115,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1052,7 +1131,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1067,7 +1147,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1082,7 +1163,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1097,7 +1179,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1112,7 +1195,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1127,7 +1211,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1142,7 +1227,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1157,7 +1243,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1172,7 +1259,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1187,7 +1275,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1202,7 +1291,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1217,7 +1307,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1232,7 +1323,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1247,7 +1339,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1262,7 +1355,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1277,7 +1371,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1292,7 +1387,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1307,7 +1403,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1322,7 +1419,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1337,7 +1435,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1352,7 +1451,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1367,7 +1467,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1382,7 +1483,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1397,7 +1499,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1412,7 +1515,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1427,7 +1531,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1442,7 +1547,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1457,7 +1563,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1472,7 +1579,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1487,7 +1595,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1502,7 +1611,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1517,7 +1627,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1532,7 +1643,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1547,7 +1659,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1562,7 +1675,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1577,7 +1691,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1592,7 +1707,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1607,7 +1723,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1622,7 +1739,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1637,7 +1755,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1652,7 +1771,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1667,7 +1787,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1682,7 +1803,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1697,7 +1819,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1712,7 +1835,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1727,7 +1851,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1742,7 +1867,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1757,7 +1883,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1772,7 +1899,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1787,7 +1915,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1802,7 +1931,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1817,7 +1947,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1832,7 +1963,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1847,7 +1979,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1862,7 +1995,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1877,7 +2011,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1892,7 +2027,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1907,7 +2043,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1922,7 +2059,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1937,7 +2075,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1952,7 +2091,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1967,7 +2107,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1982,7 +2123,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -1997,7 +2139,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2012,7 +2155,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2027,7 +2171,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2042,7 +2187,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2057,7 +2203,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2072,7 +2219,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2087,7 +2235,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2102,7 +2251,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2117,7 +2267,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2132,7 +2283,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2147,7 +2299,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2162,7 +2315,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2177,7 +2331,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2192,7 +2347,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2207,7 +2363,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2222,7 +2379,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2237,7 +2395,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2252,7 +2411,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2267,7 +2427,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2282,7 +2443,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2297,7 +2459,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2312,7 +2475,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2327,7 +2491,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2342,7 +2507,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2357,7 +2523,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2372,7 +2539,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2387,7 +2555,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2402,7 +2571,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2417,7 +2587,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2432,7 +2603,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2447,7 +2619,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2462,7 +2635,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2477,7 +2651,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2492,7 +2667,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2507,7 +2683,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2522,7 +2699,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2537,7 +2715,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2552,7 +2731,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2567,7 +2747,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2582,7 +2763,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2597,7 +2779,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2612,7 +2795,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2627,7 +2811,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2642,7 +2827,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2657,7 +2843,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2672,7 +2859,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2687,7 +2875,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2702,7 +2891,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2717,7 +2907,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2732,7 +2923,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2747,7 +2939,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2762,7 +2955,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2777,7 +2971,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2792,7 +2987,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2807,7 +3003,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2822,7 +3019,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2837,7 +3035,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2852,7 +3051,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2867,7 +3067,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2882,7 +3083,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2897,7 +3099,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2912,7 +3115,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2927,7 +3131,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2942,7 +3147,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2957,7 +3163,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2972,7 +3179,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -2987,7 +3195,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3002,7 +3211,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3017,7 +3227,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3032,7 +3243,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3047,7 +3259,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3062,7 +3275,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3077,7 +3291,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3092,7 +3307,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3107,7 +3323,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3122,7 +3339,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3137,7 +3355,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3152,7 +3371,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3167,7 +3387,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3182,7 +3403,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3197,7 +3419,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3212,7 +3435,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3227,7 +3451,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3242,7 +3467,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3257,7 +3483,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3272,7 +3499,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3287,7 +3515,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3302,7 +3531,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3317,7 +3547,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3332,7 +3563,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3347,7 +3579,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3362,7 +3595,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3377,7 +3611,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3392,7 +3627,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3407,7 +3643,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3422,7 +3659,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3437,7 +3675,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3452,7 +3691,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3467,7 +3707,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3482,7 +3723,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3497,7 +3739,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3512,7 +3755,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3527,7 +3771,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3542,7 +3787,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3557,7 +3803,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3572,7 +3819,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3587,7 +3835,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3602,7 +3851,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3617,7 +3867,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3632,7 +3883,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3647,7 +3899,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3662,7 +3915,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3677,7 +3931,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3692,7 +3947,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3707,7 +3963,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3722,7 +3979,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3737,7 +3995,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3752,7 +4011,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3767,7 +4027,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3782,7 +4043,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3797,7 +4059,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3812,7 +4075,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3827,7 +4091,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3842,7 +4107,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3857,7 +4123,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3872,7 +4139,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3887,7 +4155,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3902,7 +4171,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3917,7 +4187,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3932,7 +4203,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3947,7 +4219,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3962,7 +4235,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3977,7 +4251,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -3992,7 +4267,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4007,7 +4283,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4022,7 +4299,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4037,7 +4315,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4052,7 +4331,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4067,7 +4347,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4082,7 +4363,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4097,7 +4379,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4112,7 +4395,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4127,7 +4411,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4142,7 +4427,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4157,7 +4443,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4172,7 +4459,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4187,7 +4475,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4202,7 +4491,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4217,7 +4507,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4232,7 +4523,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4247,7 +4539,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4262,7 +4555,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4277,7 +4571,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4292,7 +4587,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4307,7 +4603,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4322,7 +4619,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4337,7 +4635,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4352,7 +4651,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4367,7 +4667,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4382,7 +4683,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4397,7 +4699,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4412,7 +4715,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4427,7 +4731,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4442,7 +4747,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4457,7 +4763,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4472,7 +4779,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4487,7 +4795,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4502,7 +4811,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4517,7 +4827,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4532,7 +4843,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4543,7 +4855,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4554,7 +4867,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4565,7 +4879,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4576,7 +4891,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4587,7 +4903,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4598,7 +4915,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4609,7 +4927,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4620,7 +4939,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4631,7 +4951,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4642,7 +4963,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4653,7 +4975,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4664,7 +4987,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4675,7 +4999,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4683,11 +5008,11 @@
       "kind": "tool-result",
       "source": null,
       "hardNegative": true,
-      "falsePositive": true,
+      "falsePositive": false,
       "verdict": {
-        "detect": true,
+        "detect": false,
         "enforce": false,
-        "signal": "mcp-injection: Credential Path Directive"
+        "signal": "no protection"
       }
     },
     {
@@ -4698,7 +5023,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4709,7 +5035,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4720,7 +5047,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4731,7 +5059,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4739,11 +5068,11 @@
       "kind": "tool-result",
       "source": null,
       "hardNegative": true,
-      "falsePositive": true,
+      "falsePositive": false,
       "verdict": {
-        "detect": true,
+        "detect": false,
         "enforce": false,
-        "signal": "mcp-injection: Credential Path Directive"
+        "signal": "no protection"
       }
     },
     {
@@ -4754,7 +5083,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4765,7 +5095,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4776,7 +5107,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4787,7 +5119,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     },
     {
@@ -4798,7 +5131,8 @@
       "falsePositive": false,
       "verdict": {
         "detect": false,
-        "enforce": false
+        "enforce": false,
+        "signal": "no protection"
       }
     }
   ]

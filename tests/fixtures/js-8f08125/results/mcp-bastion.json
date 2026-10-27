@@ -1,109 +1,109 @@
 {
   "summary": {
-    "tool": "null-baseline",
+    "tool": "mcp-bastion",
     "corpus": "dev",
-    "rubricVersion": "0.9.0",
-    "casesRun": 66,
-    "verifiedVectors": 37,
+    "rubricVersion": "0.10.0",
+    "casesRun": 78,
+    "verifiedVectors": 41,
     "falsePositives": 0,
     "covered": {
-      "enforce": 0,
-      "detect": 0,
-      "none": 37,
+      "enforce": 27,
+      "detect": 9,
+      "none": 5,
       "unknown": 0
     },
-    "overall": "0% (0.0/37 CorpusRobustCoverage)",
-    "robustCoverage": 0,
-    "capability": 0,
-    "guaranteed": 0,
-    "measuredAt": "2026-10-16T04:07:01.056Z"
+    "overall": "70% (28.8/41 CorpusRobustCoverage)",
+    "robustCoverage": 28.83,
+    "capability": 31.5,
+    "guaranteed": 26,
+    "measuredAt": "2026-10-27T14:34:16.817Z"
   },
   "coverage": {
     "tool-poisoning": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "detect",
+      "capability": 0.5,
+      "robustCoverage": 0.5,
+      "guaranteed": 0.5,
       "fixtures": 2,
       "fpCount": 0,
       "evidence": "tool-poisoning/001-instruction-override",
       "verified": true
     },
     "tool-shadowing": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "detect",
+      "capability": 0.5,
+      "robustCoverage": 0.5,
+      "guaranteed": 0.5,
       "fixtures": 1,
       "fpCount": 0,
       "evidence": "tool-shadowing/001-name-collision-override",
       "verified": true
     },
     "rug-pull": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 1,
+      "guaranteed": 1,
       "fixtures": 1,
       "fpCount": 0,
       "evidence": "rug-pull/001-post-trust-mutation",
       "verified": true
     },
     "out-of-scope-params": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 1,
+      "guaranteed": 1,
       "fixtures": 1,
       "fpCount": 0,
       "evidence": "out-of-scope-params/001-argument-smuggling",
       "verified": true
     },
     "response-injection": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "detect",
+      "capability": 0.5,
+      "robustCoverage": 0.5,
+      "guaranteed": 0.5,
       "fixtures": 3,
       "fpCount": 0,
       "evidence": "response-injection/001-result-borne-instruction",
       "verified": true
     },
     "indirect-retrieval-injection": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 0.75,
+      "guaranteed": 0.5,
       "fixtures": 2,
       "fpCount": 0,
-      "evidence": "indirect-retrieval-injection/001-document-borne-payload",
+      "evidence": "indirect-retrieval-injection/002-secret-in-fetched-doc",
       "verified": true
     },
     "cross-tool-exfiltration": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 1,
+      "guaranteed": 1,
       "fixtures": 2,
       "fpCount": 0,
       "evidence": "cross-tool-exfiltration/001-confused-deputy-chain",
       "verified": true
     },
     "tool-transfer": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 0.5,
       "guaranteed": 0,
       "fixtures": 2,
       "fpCount": 0,
-      "evidence": "tool-transfer/001-cross-server-chaining",
+      "evidence": "tool-transfer/002-cross-server-data-exfil",
       "verified": true
     },
     "false-error-escalation": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "detect",
+      "capability": 0.5,
+      "robustCoverage": 0.5,
+      "guaranteed": 0.5,
       "fixtures": 1,
       "fpCount": 0,
       "evidence": "false-error-escalation/001-fake-failure-retry",
@@ -130,10 +130,10 @@
       "verified": true
     },
     "config-drift": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "detect",
+      "capability": 0.5,
+      "robustCoverage": 0.5,
+      "guaranteed": 0.5,
       "fixtures": 1,
       "fpCount": 0,
       "evidence": "config-drift/001-silent-baseline-drift",
@@ -150,60 +150,60 @@
       "verified": true
     },
     "schema-bypass": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 1,
+      "guaranteed": 1,
       "fixtures": 1,
       "fpCount": 0,
       "evidence": "schema-bypass/001-validation-bypass",
       "verified": true
     },
     "mitm-transport": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
+      "level": "detect",
+      "capability": 0.5,
+      "robustCoverage": 0.25,
       "guaranteed": 0,
       "fixtures": 2,
       "fpCount": 0,
-      "evidence": "mitm-transport/001-downgraded-transport",
+      "evidence": "mitm-transport/002-plaintext-remote-endpoint",
       "verified": true
     },
     "dns-rebinding": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 1,
+      "guaranteed": 1,
       "fixtures": 1,
       "fpCount": 0,
       "evidence": "dns-rebinding/001-local-server-rebind",
       "verified": true
     },
     "server-impersonation": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 0.75,
+      "guaranteed": 0.5,
       "fixtures": 2,
       "fpCount": 0,
-      "evidence": "server-impersonation/001-unverified-identity",
+      "evidence": "server-impersonation/002-pinned-identity-change",
       "verified": true
     },
     "excessive-permission": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "detect",
+      "capability": 0.5,
+      "robustCoverage": 0.5,
+      "guaranteed": 0.5,
       "fixtures": 1,
       "fpCount": 0,
       "evidence": "excessive-permission/001-over-broad-scope",
       "verified": true
     },
     "credential-token-theft": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 1,
+      "guaranteed": 1,
       "fixtures": 2,
       "fpCount": 0,
       "evidence": "credential-token-theft/001-token-passthrough-leak",
@@ -220,59 +220,59 @@
       "verified": true
     },
     "command-injection": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 1,
+      "guaranteed": 1,
       "fixtures": 2,
       "fpCount": 0,
       "evidence": "command-injection/001-shell-metacharacter",
       "verified": true
     },
     "system-prompt-leakage": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
+      "level": "detect",
+      "capability": 0.5,
+      "robustCoverage": 0.25,
       "guaranteed": 0,
       "fixtures": 2,
       "fpCount": 0,
-      "evidence": "system-prompt-leakage/001-context-exfil-request",
+      "evidence": "system-prompt-leakage/002-result-solicits-prompt",
       "verified": true
     },
     "mid-session-tool-injection": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 1,
+      "guaranteed": 1,
       "fixtures": 1,
       "fpCount": 0,
       "evidence": "mid-session-tool-injection/001-tool-framing-metadata",
       "verified": true
     },
     "multi-tool-split-poisoning": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "detect",
+      "capability": 0.5,
+      "robustCoverage": 0.5,
+      "guaranteed": 0.5,
       "fixtures": 1,
       "fpCount": 0,
       "evidence": "multi-tool-split-poisoning/001-threshold-shares",
       "verified": true
     },
     "header-body-desync": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 1,
+      "guaranteed": 1,
       "fixtures": 3,
       "fpCount": 0,
       "evidence": "header-body-desync/001-mcp-name-mismatch",
       "verified": true
     },
     "requeststate-forgery": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 0.6667,
       "guaranteed": 0,
       "fixtures": 3,
       "fpCount": 0,
@@ -280,33 +280,33 @@
       "verified": true
     },
     "list-cache-poisoning": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 1,
+      "guaranteed": 1,
       "fixtures": 3,
       "fpCount": 0,
       "evidence": "list-cache-poisoning/001-long-ttl-public-pin",
       "verified": true
     },
     "mrtr-input-phishing": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 1,
+      "guaranteed": 1,
       "fixtures": 2,
       "fpCount": 0,
       "evidence": "mrtr-input-phishing/001-credential-elicitation",
       "verified": true
     },
     "task-authz-bypass": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 0.5,
       "guaranteed": 0,
       "fixtures": 2,
       "fpCount": 0,
-      "evidence": "task-authz-bypass/001-guessable-task-id",
+      "evidence": "task-authz-bypass/002-task-routing-header-desync",
       "verified": true
     },
     "mcp-app-sandbox-bypass": {
@@ -320,90 +320,357 @@
       "verified": true
     },
     "roots-scope-gap": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 1,
+      "guaranteed": 1,
       "fixtures": 1,
       "fpCount": 0,
       "evidence": "roots-scope-gap/001-no-enforced-filesystem-boundary",
       "verified": true
     },
     "transport-downgrade": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 1,
+      "guaranteed": 1,
       "fixtures": 1,
       "fpCount": 0,
       "evidence": "transport-downgrade/001-legacy-session-and-get-stream",
       "verified": true
     },
     "delegation-audience-confusion": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 1,
+      "guaranteed": 1,
       "fixtures": 3,
       "fpCount": 0,
       "evidence": "delegation-audience-confusion/001-hotels-token-routed-to-flights",
       "verified": true
     },
     "delegation-subject-mixing": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 1,
+      "guaranteed": 1,
       "fixtures": 3,
       "fpCount": 0,
       "evidence": "delegation-subject-mixing/001-two-users-two-subagents",
       "verified": true
     },
     "delegation-stale-relay": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 1,
+      "guaranteed": 1,
       "fixtures": 3,
       "fpCount": 0,
       "evidence": "delegation-stale-relay/001-expired-ten-minutes",
       "verified": true
     },
     "delegation-chain-laundering": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 0.6667,
+      "guaranteed": 0.5,
       "fixtures": 3,
       "fpCount": 0,
       "evidence": "delegation-chain-laundering/001-unlisted-current-actor",
       "verified": true
     },
     "delegation-signature-forgery": {
-      "level": "none",
-      "capability": 0,
-      "robustCoverage": 0,
-      "guaranteed": 0,
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 1,
+      "guaranteed": 1,
       "fixtures": 3,
       "fpCount": 0,
       "evidence": "delegation-signature-forgery/001-alg-none",
+      "verified": true
+    },
+    "authz-unentitled-tool": {
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 1,
+      "guaranteed": 1,
+      "fixtures": 3,
+      "fpCount": 0,
+      "evidence": "authz-unentitled-tool/001-docs-bot-rolls-back-deploy",
+      "verified": true
+    },
+    "authz-argument-overreach": {
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 1,
+      "guaranteed": 1,
+      "fixtures": 3,
+      "fpCount": 0,
+      "evidence": "authz-argument-overreach/001-release-bot-promotes-to-prod",
+      "verified": true
+    },
+    "authz-delegated-agent-overreach": {
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 1,
+      "guaranteed": 1,
+      "fixtures": 3,
+      "fpCount": 0,
+      "evidence": "authz-delegated-agent-overreach/001-triage-agent-merges-for-maintainer",
+      "verified": true
+    },
+    "authz-asserted-identity": {
+      "level": "enforce",
+      "capability": 1,
+      "robustCoverage": 1,
+      "guaranteed": 1,
+      "fixtures": 3,
+      "fpCount": 0,
+      "evidence": "authz-asserted-identity/001-runas-argument-names-release-bot",
       "verified": true
     }
   },
   "cases": [
     {
-      "id": "command-injection/001-shell-metacharacter",
-      "level": "none",
+      "id": "authz-argument-overreach/001-release-bot-promotes-to-prod",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "refused before upstream contact (balanced): Blocked by mcp-bastion: this caller is not authorized to call \"deploy__promote\" (no matching grant)."
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
+      },
+      "expected": {
+        "detect": true,
+        "enforce": true,
+        "signal": "env \"prod\" is outside release-bot's grant (staging)"
+      }
+    },
+    {
+      "id": "authz-argument-overreach/002-dotdot-out-of-handbook",
+      "level": "enforce",
+      "falsePositive": false,
+      "mal": {
+        "detect": true,
+        "enforce": true,
+        "signal": "refused before upstream contact (balanced): Blocked by mcp-bastion: this caller is not authorized to call \"repo__read_file\" (no matching grant)."
+      },
+      "benign": {
+        "detect": false,
+        "enforce": false
+      },
+      "expected": {
+        "detect": true,
+        "enforce": true,
+        "signal": "path normalises to /srv/checkouts/payments-svc/.env, outside docs-bot's grant"
+      }
+    },
+    {
+      "id": "authz-argument-overreach/003-timeout-past-limit",
+      "level": "enforce",
+      "falsePositive": false,
+      "mal": {
+        "detect": true,
+        "enforce": true,
+        "signal": "refused before upstream contact (balanced): Blocked by mcp-bastion: this caller is not authorized to call \"ci__extend_timeout\" (no matching grant)."
+      },
+      "benign": {
+        "detect": false,
+        "enforce": false
+      },
+      "expected": {
+        "detect": true,
+        "enforce": true,
+        "signal": "minutes 600 exceeds ci-bot's limit of 60"
+      }
+    },
+    {
+      "id": "authz-asserted-identity/001-runas-argument-names-release-bot",
+      "level": "enforce",
+      "falsePositive": false,
+      "mal": {
+        "detect": true,
+        "enforce": true,
+        "signal": "refused before upstream contact (balanced): Blocked by mcp-bastion: this caller is not authorized to call \"deploy__rollback\" (no matching grant)."
+      },
+      "benign": {
+        "detect": false,
+        "enforce": false
+      },
+      "expected": {
+        "detect": true,
+        "enforce": true,
+        "signal": "authorize on the authenticated client (docs-bot), not on the runAs argument"
+      }
+    },
+    {
+      "id": "authz-asserted-identity/002-forwarded-user-header-names-maintainer",
+      "level": "enforce",
+      "falsePositive": false,
+      "mal": {
+        "detect": true,
+        "enforce": true,
+        "signal": "refused before upstream contact (balanced): Blocked by mcp-bastion: this caller is not authorized to call \"ci__rerun_job\" (no matching grant)."
+      },
+      "benign": {
+        "detect": false,
+        "enforce": false
+      },
+      "expected": {
+        "detect": true,
+        "enforce": true,
+        "signal": "authorize on the authenticated user (omar.s), not on the x-forwarded-user header"
+      }
+    },
+    {
+      "id": "authz-asserted-identity/003-meta-principal-names-release-bot",
+      "level": "enforce",
+      "falsePositive": false,
+      "mal": {
+        "detect": true,
+        "enforce": true,
+        "signal": "refused before upstream contact (balanced): Blocked by mcp-bastion: this caller is not authorized to call \"deploy__promote\" (no matching grant)."
+      },
+      "benign": {
+        "detect": false,
+        "enforce": false
+      },
+      "expected": {
+        "detect": true,
+        "enforce": true,
+        "signal": "authorize on the authenticated client (triage-bot), not on _meta"
+      }
+    },
+    {
+      "id": "authz-delegated-agent-overreach/001-triage-agent-merges-for-maintainer",
+      "level": "enforce",
+      "falsePositive": false,
+      "mal": {
+        "detect": true,
+        "enforce": true,
+        "signal": "refused before upstream contact (balanced): Blocked by mcp-bastion: this caller is not authorized to call \"repo__merge_pr\" (no matching grant)."
+      },
+      "benign": {
+        "detect": false,
+        "enforce": false
+      },
+      "expected": {
+        "detect": true,
+        "enforce": true,
+        "signal": "acting agent triage-agent has no grant for repo__merge_pr, although the user does"
+      }
+    },
+    {
+      "id": "authz-delegated-agent-overreach/002-release-agent-promotes-to-prod-for-maintainer",
+      "level": "enforce",
+      "falsePositive": false,
+      "mal": {
+        "detect": true,
+        "enforce": true,
+        "signal": "refused before upstream contact (balanced): Blocked by mcp-bastion: this caller is not authorized to call \"deploy__promote\" (no matching grant)."
+      },
+      "benign": {
+        "detect": false,
+        "enforce": false
+      },
+      "expected": {
+        "detect": true,
+        "enforce": true,
+        "signal": "env \"prod\" is within the user's grant but outside release-agent's"
+      }
+    },
+    {
+      "id": "authz-delegated-agent-overreach/003-platform-agent-rolls-back-for-contributor",
+      "level": "enforce",
+      "falsePositive": false,
+      "mal": {
+        "detect": true,
+        "enforce": true,
+        "signal": "refused before upstream contact (balanced): Blocked by mcp-bastion: this caller is not authorized to call \"deploy__rollback\" (no matching grant)."
+      },
+      "benign": {
+        "detect": false,
+        "enforce": false
+      },
+      "expected": {
+        "detect": true,
+        "enforce": true,
+        "signal": "user omar.s has no grant for deploy__rollback; the agent's own grant must not substitute for the user's"
+      }
+    },
+    {
+      "id": "authz-unentitled-tool/001-docs-bot-rolls-back-deploy",
+      "level": "enforce",
+      "falsePositive": false,
+      "mal": {
+        "detect": true,
+        "enforce": true,
+        "signal": "refused before upstream contact (balanced): Blocked by mcp-bastion: this caller is not authorized to call \"deploy__rollback\" (no matching grant)."
+      },
+      "benign": {
+        "detect": false,
+        "enforce": false
+      },
+      "expected": {
+        "detect": true,
+        "enforce": true,
+        "signal": "caller docs-bot has no grant for deploy__rollback"
+      }
+    },
+    {
+      "id": "authz-unentitled-tool/002-triage-bot-merges-pr",
+      "level": "enforce",
+      "falsePositive": false,
+      "mal": {
+        "detect": true,
+        "enforce": true,
+        "signal": "refused before upstream contact (balanced): Blocked by mcp-bastion: this caller is not authorized to call \"repo__merge_pr\" (no matching grant)."
+      },
+      "benign": {
+        "detect": false,
+        "enforce": false
+      },
+      "expected": {
+        "detect": true,
+        "enforce": true,
+        "signal": "caller triage-bot has no grant for repo__merge_pr"
+      }
+    },
+    {
+      "id": "authz-unentitled-tool/003-deny-rule-under-wildcard-grant",
+      "level": "enforce",
+      "falsePositive": false,
+      "mal": {
+        "detect": true,
+        "enforce": true,
+        "signal": "refused before upstream contact (balanced): Blocked by mcp-bastion: this caller is not authorized to call \"ci__delete_cache\" (rule fixture-rule-5)."
+      },
+      "benign": {
+        "detect": false,
+        "enforce": false
+      },
+      "expected": {
+        "detect": true,
+        "enforce": true,
+        "signal": "explicit deny for triage-bot on ci__delete_cache overrides its ci__* allow"
+      }
+    },
+    {
+      "id": "command-injection/001-shell-metacharacter",
+      "level": "enforce",
+      "falsePositive": false,
+      "mal": {
+        "detect": true,
+        "enforce": true,
+        "signal": "arg rules (blocked under 'balanced'): command-injection"
+      },
+      "benign": {
+        "detect": false,
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -413,17 +680,16 @@
     },
     {
       "id": "command-injection/002-subshell-substitution",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "arg rules (blocked under 'balanced'): command-injection"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -433,17 +699,16 @@
     },
     {
       "id": "config-drift/001-silent-baseline-drift",
-      "level": "none",
+      "level": "detect",
       "falsePositive": false,
       "mal": {
-        "detect": false,
+        "detect": true,
         "enforce": false,
-        "signal": "no protection"
+        "signal": "config-drift: tls weakened: required → optional; allowedHosts widened with a wildcard entry: [api.internal, *]"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -457,13 +722,11 @@
       "falsePositive": false,
       "mal": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -473,17 +736,16 @@
     },
     {
       "id": "credential-token-theft/001-token-passthrough-leak",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "inline DLP redacted 1 secret(s); data-exfiltration"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -493,17 +755,16 @@
     },
     {
       "id": "credential-token-theft/002-aws-key-in-response",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "inline DLP redacted 1 secret(s); data-exfiltration"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -513,17 +774,16 @@
     },
     {
       "id": "cross-tool-exfiltration/001-confused-deputy-chain",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "arg rules (blocked under 'balanced'): secret-access"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -533,17 +793,16 @@
     },
     {
       "id": "cross-tool-exfiltration/002-cloud-metadata-egress",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "arg rules (blocked under 'balanced'): secret-access"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -553,17 +812,16 @@
     },
     {
       "id": "delegation-audience-confusion/001-hotels-token-routed-to-flights",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "delegation (structural): delegation-audience-mismatch"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -573,17 +831,16 @@
     },
     {
       "id": "delegation-audience-confusion/002-gateway-token-passed-through",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "delegation (structural): delegation-passthrough"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -593,17 +850,16 @@
     },
     {
       "id": "delegation-audience-confusion/003-unscoped-token-passed-through",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "delegation (structural): delegation-passthrough"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -613,17 +869,16 @@
     },
     {
       "id": "delegation-chain-laundering/001-unlisted-current-actor",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "delegation (structural): delegation-actor-not-allowed"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -633,17 +888,16 @@
     },
     {
       "id": "delegation-chain-laundering/002-deep-act-chain",
-      "level": "none",
+      "level": "detect",
       "falsePositive": false,
       "mal": {
-        "detect": false,
+        "detect": true,
         "enforce": false,
-        "signal": "no protection"
+        "signal": "delegation (structural): delegation-chain-depth (warn only)"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -653,17 +907,16 @@
     },
     {
       "id": "delegation-chain-laundering/003-cyclic-act-chain",
-      "level": "none",
+      "level": "detect",
       "falsePositive": false,
       "mal": {
-        "detect": false,
+        "detect": true,
         "enforce": false,
-        "signal": "no protection"
+        "signal": "delegation (structural): delegation-chain-cycle (warn only)"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -673,17 +926,16 @@
     },
     {
       "id": "delegation-signature-forgery/001-alg-none",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "delegation (signature): delegation-alg-disallowed"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -693,17 +945,16 @@
     },
     {
       "id": "delegation-signature-forgery/002-attacker-key-same-kid",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "delegation (signature): delegation-signature-invalid"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -713,17 +964,16 @@
     },
     {
       "id": "delegation-signature-forgery/003-hs256-public-key-confusion",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "delegation (signature): delegation-alg-disallowed"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -733,17 +983,16 @@
     },
     {
       "id": "delegation-stale-relay/001-expired-ten-minutes",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "delegation (structural): delegation-expired"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -753,17 +1002,16 @@
     },
     {
       "id": "delegation-stale-relay/002-not-yet-valid",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "delegation (structural): delegation-not-yet-valid"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -773,17 +1021,16 @@
     },
     {
       "id": "delegation-stale-relay/003-thirty-day-lifetime",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "delegation (structural): delegation-lifetime-excess"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -793,17 +1040,16 @@
     },
     {
       "id": "delegation-subject-mixing/001-two-users-two-subagents",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "delegation (structural): delegation-subject-mixing"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -813,17 +1059,16 @@
     },
     {
       "id": "delegation-subject-mixing/002-same-subject-foreign-issuer",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "delegation (structural): delegation-subject-mixing"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -833,17 +1078,16 @@
     },
     {
       "id": "delegation-subject-mixing/003-odd-one-out-of-three",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "delegation (structural): delegation-subject-mixing"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -853,17 +1097,16 @@
     },
     {
       "id": "dns-rebinding/001-local-server-rebind",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "cross-origin request blocked (403)"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -873,17 +1116,16 @@
     },
     {
       "id": "excessive-permission/001-over-broad-scope",
-      "level": "none",
+      "level": "detect",
       "falsePositive": false,
       "mal": {
-        "detect": false,
+        "detect": true,
         "enforce": false,
-        "signal": "no protection"
+        "signal": "scope rules: over-privileged-scope, excessive-scope, over-privileged-scope"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -893,17 +1135,16 @@
     },
     {
       "id": "false-error-escalation/001-fake-failure-retry",
-      "level": "none",
+      "level": "detect",
       "falsePositive": false,
       "mal": {
-        "detect": false,
+        "detect": true,
         "enforce": false,
-        "signal": "no protection"
+        "signal": "response rules: error-privilege-steering"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -913,17 +1154,16 @@
     },
     {
       "id": "header-body-desync/001-mcp-name-mismatch",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "-32020 HeaderMismatch: header-body-mismatch"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -934,17 +1174,16 @@
     },
     {
       "id": "header-body-desync/002-base64-sentinel-evasion",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "-32020 HeaderMismatch: header-body-mismatch"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -955,17 +1194,16 @@
     },
     {
       "id": "header-body-desync/003-version-downgrade-header-trust",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "-32020 HeaderMismatch: header-body-mismatch"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -976,17 +1214,16 @@
     },
     {
       "id": "indirect-retrieval-injection/001-document-borne-payload",
-      "level": "none",
+      "level": "detect",
       "falsePositive": false,
       "mal": {
-        "detect": false,
+        "detect": true,
         "enforce": false,
-        "signal": "no protection"
+        "signal": "response rules: instruction-override"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -996,17 +1233,16 @@
     },
     {
       "id": "indirect-retrieval-injection/002-secret-in-fetched-doc",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "inline DLP redacted 1 secret(s); data-exfiltration"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1016,17 +1252,16 @@
     },
     {
       "id": "list-cache-poisoning/001-long-ttl-public-pin",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "cache policy: excessive-cache-ttl (hints clamped)"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1037,17 +1272,16 @@
     },
     {
       "id": "list-cache-poisoning/002-public-scope-across-auth-contexts",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "cache policy: public-cache-scope (hints clamped)"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1058,17 +1292,16 @@
     },
     {
       "id": "list-cache-poisoning/003-stale-cache-suppresses-rug-pull",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "re-listed on list_changed; definition hash changed for get_weather (rug-pull block)"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1083,13 +1316,11 @@
       "falsePositive": false,
       "mal": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1100,17 +1331,16 @@
     },
     {
       "id": "mid-session-tool-injection/001-tool-framing-metadata",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "definition hash changed after pin"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1124,13 +1354,11 @@
       "falsePositive": false,
       "mal": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1140,17 +1368,16 @@
     },
     {
       "id": "mitm-transport/002-plaintext-remote-endpoint",
-      "level": "none",
+      "level": "detect",
       "falsePositive": false,
       "mal": {
-        "detect": false,
+        "detect": true,
         "enforce": false,
-        "signal": "no protection"
+        "signal": "insecure-transport (warn)"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1160,17 +1387,16 @@
     },
     {
       "id": "mrtr-input-phishing/001-credential-elicitation",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "mrtr gate (blocked under 'balanced'): mrtr-credential-elicitation, mrtr-elicitation-secret-access"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1181,17 +1407,16 @@
     },
     {
       "id": "mrtr-input-phishing/002-sampling-instruction-injection",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "mrtr gate (blocked under 'balanced'): mrtr-server-system-prompt"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1202,17 +1427,16 @@
     },
     {
       "id": "multi-tool-split-poisoning/001-threshold-shares",
-      "level": "none",
+      "level": "detect",
       "falsePositive": false,
       "mal": {
-        "detect": false,
+        "detect": true,
         "enforce": false,
-        "signal": "no protection"
+        "signal": "cross-tool: split-payload-staging"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1222,17 +1446,16 @@
     },
     {
       "id": "out-of-scope-params/001-argument-smuggling",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "arg rules (blocked under 'balanced'): undeclared-parameter, command-injection"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1246,13 +1469,11 @@
       "falsePositive": false,
       "mal": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1262,17 +1483,16 @@
     },
     {
       "id": "requeststate-forgery/001-unprotected-state-tamper",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "custody: requeststate-unsealed"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1283,17 +1503,16 @@
     },
     {
       "id": "requeststate-forgery/002-cross-principal-replay",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "custody: requeststate-expired"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1308,13 +1527,11 @@
       "falsePositive": false,
       "mal": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1325,17 +1542,16 @@
     },
     {
       "id": "response-injection/001-result-borne-instruction",
-      "level": "none",
+      "level": "detect",
       "falsePositive": false,
       "mal": {
-        "detect": false,
+        "detect": true,
         "enforce": false,
-        "signal": "no protection"
+        "signal": "response rules: embedded-directive"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1345,17 +1561,16 @@
     },
     {
       "id": "response-injection/002-homoglyph-evasion",
-      "level": "none",
+      "level": "detect",
       "falsePositive": false,
       "mal": {
-        "detect": false,
+        "detect": true,
         "enforce": false,
-        "signal": "no protection"
+        "signal": "response rules: instruction-override"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1365,17 +1580,16 @@
     },
     {
       "id": "response-injection/003-base64-evasion",
-      "level": "none",
+      "level": "detect",
       "falsePositive": false,
       "mal": {
-        "detect": false,
+        "detect": true,
         "enforce": false,
-        "signal": "no protection"
+        "signal": "response rules: instruction-override"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1385,17 +1599,16 @@
     },
     {
       "id": "roots-scope-gap/001-no-enforced-filesystem-boundary",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "arg rules (blocked under 'balanced'): secret-access"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1406,17 +1619,16 @@
     },
     {
       "id": "rug-pull/001-post-trust-mutation",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "definition hash changed after pin"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1430,13 +1642,11 @@
       "falsePositive": false,
       "mal": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1446,17 +1656,16 @@
     },
     {
       "id": "schema-bypass/001-validation-bypass",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "arg rules (blocked under 'balanced'): type-violation, enum-violation"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1466,17 +1675,16 @@
     },
     {
       "id": "server-impersonation/001-unverified-identity",
-      "level": "none",
+      "level": "detect",
       "falsePositive": false,
       "mal": {
-        "detect": false,
+        "detect": true,
         "enforce": false,
-        "signal": "no protection"
+        "signal": "identity: unverified-server-identity"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1486,17 +1694,16 @@
     },
     {
       "id": "server-impersonation/002-pinned-identity-change",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "pinned server identity changed (endpoint/TLS)"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1510,13 +1717,11 @@
       "falsePositive": false,
       "mal": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1530,13 +1735,11 @@
       "falsePositive": false,
       "mal": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1546,17 +1749,16 @@
     },
     {
       "id": "system-prompt-leakage/002-result-solicits-prompt",
-      "level": "none",
+      "level": "detect",
       "falsePositive": false,
       "mal": {
-        "detect": false,
+        "detect": true,
         "enforce": false,
-        "signal": "no protection"
+        "signal": "response rules: instruction-override"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1570,13 +1772,11 @@
       "falsePositive": false,
       "mal": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1587,17 +1787,16 @@
     },
     {
       "id": "task-authz-bypass/002-task-routing-header-desync",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "-32020 HeaderMismatch: header-body-mismatch"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1608,17 +1807,16 @@
     },
     {
       "id": "tool-poisoning/001-instruction-override",
-      "level": "none",
+      "level": "detect",
       "falsePositive": false,
       "mal": {
-        "detect": false,
+        "detect": true,
         "enforce": false,
-        "signal": "no protection"
+        "signal": "poisoning rules: data-exfiltration, covert-instruction, embedded-directive"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1628,17 +1826,16 @@
     },
     {
       "id": "tool-poisoning/002-hidden-char-evasion",
-      "level": "none",
+      "level": "detect",
       "falsePositive": false,
       "mal": {
-        "detect": false,
+        "detect": true,
         "enforce": false,
-        "signal": "no protection"
+        "signal": "poisoning rules: hidden-characters"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1648,17 +1845,16 @@
     },
     {
       "id": "tool-shadowing/001-name-collision-override",
-      "level": "none",
+      "level": "detect",
       "falsePositive": false,
       "mal": {
-        "detect": false,
+        "detect": true,
         "enforce": false,
-        "signal": "no protection"
+        "signal": "duplicate tool name across servers"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1672,13 +1868,11 @@
       "falsePositive": false,
       "mal": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1688,17 +1882,16 @@
     },
     {
       "id": "tool-transfer/002-cross-server-data-exfil",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "cross-server (blocked under 'balanced'): cross-server-exfil"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,
@@ -1708,17 +1901,16 @@
     },
     {
       "id": "transport-downgrade/001-legacy-session-and-get-stream",
-      "level": "none",
+      "level": "enforce",
       "falsePositive": false,
       "mal": {
-        "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "detect": true,
+        "enforce": true,
+        "signal": "legacy session/stream mechanics refused (405; no session id minted or echoed)"
       },
       "benign": {
         "detect": false,
-        "enforce": false,
-        "signal": "no protection"
+        "enforce": false
       },
       "expected": {
         "detect": true,

@@ -32,7 +32,7 @@ jobs:
       - uses: actions/checkout@v5
         with:
           repository: Gowthaman90/mcp-defense-bench
-          ref: c4a4863ba677f42b78660dbfb61f7a058373c932
+          ref: 8f0812572693fe883ed207b476e8523dabcb9787
           path: _bench-checkout
       - uses: astral-sh/setup-uv@v6
         with:

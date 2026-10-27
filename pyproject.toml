@@ -1,6 +1,6 @@
 [project]
 name = "mcp-defense-bench"
-version = "0.2.0"
+version = "0.3.0"
 description = "Score Python MCP defences on the mcp-defense-bench corpus, with the same metrics as the JS leaderboard."
 readme = "README.md"
 license = "Apache-2.0"

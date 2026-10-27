@@ -4,6 +4,7 @@ import json
 import shutil
 
 import pytest
+from conftest import AUTHZ_VECTORS
 
 from mcp_defense_bench import BENCH_COMMIT
 from mcp_defense_bench.bench import VENDORED_ROOT, Bench, BenchError, load_manifest, scored_case_files
@@ -12,17 +13,17 @@ from mcp_defense_bench.bench import VENDORED_ROOT, Bench, BenchError, load_manif
 def test_vendored_snapshot_verifies(bench):
     report = bench.verify(("dev", "benign"))
     assert report.ok, report.problems
-    assert report.counts == {"dev": 66, "benign": 337}
+    assert report.counts == {"dev": 78, "benign": 337}
 
 
 def test_manifest_pins_commit_and_counts():
     m = load_manifest()
     assert m["benchCommit"] == BENCH_COMMIT
-    assert (m["benchVersion"], m["rubricVersion"], m["vectors"]) == ("0.9.0", "0.9.0", 37)
+    assert (m["benchVersion"], m["rubricVersion"], m["vectors"]) == ("0.10.0", "0.10.0", 41)
     c = m["corpora"]
-    assert (c["dev"]["cases"], c["dev"]["vectorDirs"]) == (66, 37)
+    assert (c["dev"]["cases"], c["dev"]["vectorDirs"]) == (78, 41)
     assert (c["benign"]["cases"], c["benign"]["vectorDirs"]) == (337, 13)
-    assert (c["heldout"]["cases"], c["heldout"]["vectorDirs"], c["heldout"]["vendored"]) == (63, 29, False)
+    assert (c["heldout"]["cases"], c["heldout"]["vectorDirs"], c["heldout"]["vendored"]) == (75, 33, False)
 
 
 def test_heldout_is_not_vendored(bench):
@@ -33,8 +34,20 @@ def test_heldout_is_not_vendored(bench):
 
 def test_rubric(bench):
     ids = [v["id"] for v in bench.rubric["vectors"]]
-    assert len(ids) == len(set(ids)) == 37
+    assert len(ids) == len(set(ids)) == 41
     assert sum(v.get("vectorFamily") == "delegation" for v in bench.rubric["vectors"]) == 5
+    assert [v["id"] for v in bench.rubric["vectors"] if v.get("vectorFamily") == "authorization"] == list(AUTHZ_VECTORS)
+
+
+def test_authorization_fixtures(bench):
+    """12 dev cases, 3 per vector; attack and control are both ``authorized-call`` and differ in one thing."""
+    authz = [tc for tc in bench.load_cases("dev") if tc["vector"] in AUTHZ_VECTORS]
+    assert len(authz) == 12
+    for tc in authz:
+        mal, ctl = tc["fixture"], tc["benignControl"]
+        assert mal["type"] == ctl["type"] == "authorized-call"
+        assert {"policy", "caller", "request"} <= mal.keys() and "scoreCap" not in tc
+    assert not any(tc["fixture"].get("type") == "authorized-call" for tc in bench.load_cases("benign"))
 
 
 def test_tampering_is_detected(tmp_path):
@@ -75,4 +88,4 @@ def test_checkout_heldout_hashes_and_counts_only(bench_checkout):
     """Held-out integrity: hashes and counts against the manifest. Nothing is scored."""
     report = Bench.from_path(bench_checkout).verify(("heldout",))
     assert report.ok, report.problems
-    assert report.counts == {"heldout": 63}
+    assert report.counts == {"heldout": 75}

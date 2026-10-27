@@ -5,9 +5,19 @@ from typing import Any
 
 import pytest
 
-from mcp_defense_bench import run
+from mcp_defense_bench import AdapterMeta, run
+from mcp_defense_bench.adapters import meta_dict
 from mcp_defense_bench.bench import BenchError
-from mcp_defense_bench.scoring import cap_level, level_from, score_benign, score_matched, vector_metrics, wilson
+from mcp_defense_bench.scoring import (
+    cap_level,
+    level_from,
+    score_benign,
+    score_matched,
+    unwired_counts,
+    vector_metrics,
+    wilson,
+    wired,
+)
 
 
 @pytest.mark.parametrize(
@@ -66,9 +76,76 @@ def test_fixture_types_leave_other_vectors_unknown(bench):
     cov, s = res["coverage"], res["summary"]
     assert cov["tool-poisoning"]["level"] == "enforce"
     assert cov["command-injection"] == {**cov["command-injection"], "level": "unknown", "verified": False}
-    assert s["casesRun"] == 3 and s["covered"]["unknown"] == 37 - s["verifiedVectors"]
+    assert s["casesRun"] == 3 and s["covered"]["unknown"] == 41 - s["verifiedVectors"]
     ben = asyncio.run(score_benign(_Flags(), bench.load_cases("benign"), bench.rubric))["summary"]
     assert ben["items"] == 256 and ben["falsePositives"] == 0
+
+
+AUTHZ = {"fixture": {"type": "authorized-call"}}
+DEF = {"fixture": {"type": "malicious-tool-definition"}}
+
+
+@pytest.mark.parametrize(
+    ("meta", "authz", "defn"),
+    [
+        ({}, True, True),
+        ({"fixtureTypes": ["authorized-call"]}, True, False),
+        ({"unwiredFixtureTypes": ["authorized-call"]}, False, True),
+        ({"fixtureTypes": ["authorized-call"], "unwiredFixtureTypes": ["authorized-call"]}, False, False),
+        ({"fixtureTypes": "authorized-call"}, True, True),  # not an array: ignored, as in bin/run.mjs
+        ({"unwiredFixtureTypes": None}, True, True),
+    ],
+)
+def test_wired_matches_run_mjs(meta, authz, defn):
+    assert (wired(meta, AUTHZ), wired(meta, DEF)) == (authz, defn)
+    assert wired(meta, {}) == (not isinstance(meta.get("fixtureTypes"), list))
+
+
+def test_adapter_meta_serialises_both_declarations():
+    m = AdapterMeta(tool="t", fixture_types=("tool-call",), unwired_fixture_types=("authorized-call",))
+    assert meta_dict(type("A", (), {"meta": m})()) == {
+        "tool": "t",
+        "class": "unknown",
+        "reproducible": False,
+        "fixtureTypes": ["tool-call"],
+        "unwiredFixtureTypes": ["authorized-call"],
+    }
+
+
+class _Refuses:
+    """Blocks every call: catches every attack, so refuses every benign control too."""
+
+    meta: dict[str, Any] = {"tool": "refuses"}
+
+    def assess(self, input, testcase):
+        return {"detect": True, "enforce": True}
+
+
+def test_unwired_fixture_types_leave_authorization_unknown(bench):
+    class Unwired(_Refuses):
+        meta = {"tool": "unwired", "unwiredFixtureTypes": ["authorized-call"]}
+
+    dev = bench.load_cases("dev")
+    res = asyncio.run(score_matched(Unwired(), dev, bench.rubric))
+    authz = [v["id"] for v in bench.rubric["vectors"] if v.get("vectorFamily") == "authorization"]
+    assert res["summary"]["casesRun"] == 66
+    assert all(res["coverage"][v]["level"] == "unknown" and not res["coverage"][v]["verified"] for v in authz)
+    assert not any(c["id"].startswith("authz-") for c in res["cases"])
+    assert unwired_counts(meta_dict(Unwired()), dev) == {"authorized-call": 12}
+
+
+def test_refusing_by_tool_name_fails_every_authorization_control(bench):
+    """Each control differs from its attack in one thing (usually the caller): a blanket refusal is an FP."""
+
+    class AuthzOnly(_Refuses):
+        meta = {"tool": "authz-only", "fixtureTypes": ["authorized-call"]}
+
+    res = asyncio.run(score_matched(AuthzOnly(), bench.load_cases("dev"), bench.rubric))
+    s = res["summary"]
+    assert (s["casesRun"], s["falsePositives"], s["verifiedVectors"], s["covered"]["unknown"]) == (12, 12, 4, 37)
+    assert s["overall"] == "0% (0.0/41 CorpusRobustCoverage)"
+    ben = asyncio.run(score_benign(AuthzOnly(), bench.load_cases("benign"), bench.rubric))["summary"]
+    assert (ben["items"], ben["falsePositives"], ben["fpRate"]) == (0, 0, 0)
 
 
 def test_scorecap_applies_and_records_cappedfrom(bench):

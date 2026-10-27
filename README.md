@@ -75,8 +75,35 @@ class Guard:
 - blocking scores **enforce** (1).
 
 A vector's **CorpusRobustCoverage** is the mean over all its fixtures, evasion variants included.
-`fixture_types` limits the adapter to inputs it can actually see; vectors of other types stay
-`unknown` (not counted as misses), and skipped items leave the benign denominator.
+`fixture_types` limits the adapter to inputs it can actually see; `unwired_fixture_types` is the
+opposite, for the types it can't see yet. Either way, vectors of the skipped types stay `unknown`
+(not counted as misses), skipped items leave the benign denominator, and `mcp-defense-bench run`
+lists what was skipped. This is the bench's `meta.fixtureTypes` / `meta.unwiredFixtureTypes`.
+
+### Authorization fixtures (`authorized-call`)
+
+Bench 0.10.0 adds a pre-registered runtime-authorization family: 4 vectors, 12 dev cases. Each
+fixture states a deployment `policy`, an already-authenticated `caller` (`client`, `user`,
+`agent`) and one `tools/call` `request`:
+
+```python
+class Gateway:
+    meta = AdapterMeta(tool="my-gateway", class_="runtime-proxy", reproducible=True,
+                       fixture_types=("authorized-call",))   # measured on this family only
+
+    def assess(self, input, testcase):
+        policy = translate(input["policy"])                 # into your gateway's own policy language
+        allowed = my_gateway.decide(policy, input["caller"], input["request"])
+        return Verdict(detect=not allowed, enforce=not allowed, signal=my_gateway.reason)
+```
+
+Translate the policy into your defence's own policy language and pass the caller as credentials it
+verifies natively. If a rule can't be expressed, report a miss with the reason in `signal`; never
+approximate it. `enforce` means the call was refused before it reached the upstream server. Each
+benign control differs from its attack in one thing, usually the caller, so refusing by tool name
+alone scores a false positive. This package scores your adapter. It does not evaluate the policy
+itself. The semantics are in the bench's
+[`docs/AUTHORIZATION-PREREG.md`](https://github.com/Gowthaman90/mcp-defense-bench/blob/main/docs/AUTHORIZATION-PREREG.md) §4.
 
 **Integrity rule (from the bench):** report only what your defence actually inspects at runtime,
 never what its rules *could* catch if pointed at data it never sees.
@@ -105,8 +132,9 @@ replays the same traffic without the middleware and compares the two runs.
 The middleware scores **enforce** if it raises, returns an error, stops the call reaching the
 tool, hides or rewrites a definition, or rewrites the arguments or the result. It scores
 **detect** if it only logs a WARNING (or worse) on `warn_logger`. Other fixture types (HTTP
-transport, registries, delegation tokens, …) can't be expressed as FastMCP traffic, so they
-stay `unknown`.
+transport, registries, delegation tokens, `authorized-call`, …) can't be expressed as FastMCP
+traffic, so they stay `unknown`. An `authorized-call` needs an authenticated caller that a plain
+in-memory session doesn't have.
 
 See [`examples/keyword_guard.py`](examples/keyword_guard.py), a deliberately naive guard, and
 [`examples/mcp_assure_example.py`](examples/mcp_assure_example.py), which scores mcp-assure with
@@ -180,12 +208,28 @@ mcp-defense-bench totals results/my-guard.json --markdown
 ```
 
 This prints the leaderboard's "published vs all vectors" row: the 32 vectors published before
-v0.9, all 37, and the 5-vector `delegation` family. `--heldout FILE` adds the held-out totals
-from a recorded held-out run.
+v0.9, all 41, the 5-vector `delegation` family and the 4-vector `authorization` family. A
+subset the adapter was never run on reads "not wired", as on the leaderboard. `--heldout FILE`
+adds the held-out totals from a recorded held-out run. `mcp-defense-bench run` prints the same
+totals after the dev summary.
+
+At bench 0.10.0 the leaderboard reads (CorpusRobustCoverage, dev corpus):
+
+| Tool | Published 32 | All 41 | `delegation` (5) | `authorization` (4) |
+|---|--:|--:|--:|--:|
+| mcp-bastion | 63% (20.2/32) | 70% (28.8/41) | 93% (4.7/5) | 100% (4.0/4) |
+| agentgateway | not wired | 10% (4.0/41) | not wired | 100% (4.0/4) |
+| ToolHive | not wired | 10% (4.0/41) | not wired | 100% (4.0/4) |
+| mcp-firewall | 9% (3.0/32) | 11% (4.7/41) | 0% (0.0/5) | 42% (1.7/4) |
+| pipelock | 4% (1.3/32) | 3% (1.3/41) | 0% (0.0/5) | 0% (0.0/4) |
+| null-baseline | 0% (0.0/32) | 0% (0.0/41) | 0% (0.0/5) | 0% (0.0/4) |
+
+agentgateway and ToolHive are measured on the authorization family only, so their other 37
+vectors are not wired, not misses.
 
 ## The held-out corpus
 
-The bench's held-out set (63 fixtures, 29 vectors) is a **one-shot** generalisation test. Score
+The bench's held-out set (75 fixtures, 33 vectors) is a **one-shot** generalisation test. Score
 a defence on it once, at a frozen version, after all tuning on the dev corpus is done
 ([protocol](https://github.com/Gowthaman90/mcp-defense-bench/blob/main/docs/HELD-OUT-PROTOCOL.md)).
 
@@ -203,12 +247,14 @@ counts, including the held-out set's, without scoring anything.
 
 ## Parity with the JS scorer
 
-The tests replay the verdicts recorded by the JS runner for four tools (`null-baseline`,
-`mcp-bastion`, `mcp-firewall` and `pipelock`) through the Python scorer. On both the dev and
-benign corpora, the output must equal the recorded `results/*.json` **byte for byte**, apart
-from the `measuredAt` timestamp. The suite also checks:
+The tests replay the verdicts recorded by the JS runner through the Python scorer, for six
+tools: `null-baseline`, `mcp-bastion`, `mcp-firewall` and `pipelock` on the dev and benign
+corpora, and `agentgateway` and `toolhive` on the dev corpus. The last two are wired for
+`authorized-call` only and have no benign run. The output must equal the recorded
+`results/*.json` **byte for byte**, apart from the `measuredAt` timestamp. The suite also checks:
 
 - the per-vector coverage against each `coverage.json`;
+- the authorization family per vector and per tool, against the bench's 2026-10-27 scoring changelog;
 - the totals rows against the generated `LEADERBOARD.md`;
 - a live Python run of the null baseline.
 
@@ -222,11 +268,11 @@ Three porting traps are handled in `jscompat.py`:
 
 | | |
 |---|---|
-| Bench | mcp-defense-bench 0.9.0 (tag `v0.9.0`, commit `c4a4863`) |
-| Rubric | 0.9.0, 37 vectors |
-| Dev corpus | 66 cases |
+| Bench | mcp-defense-bench 0.10.0 (tag `v0.10.0`, commit `8f08125`, DOI [10.5281/zenodo.23712070](https://doi.org/10.5281/zenodo.23712070)) |
+| Rubric | 0.10.0, 41 vectors: 32 published before v0.9 + `delegation` 5 + `authorization` 4 |
+| Dev corpus | 78 cases (12 `authorized-call`) |
 | Benign corpus | 337 items |
-| Held-out corpus | 63 cases (hashes only) |
+| Held-out corpus | 75 cases (hashes only) |
 | FastMCP adapter | `fastmcp>=4.0,<5` (MCP SDK v2) |
 
 Run `mcp-defense-bench info` to see these, and `mcp-defense-bench verify` to check the vendored data.

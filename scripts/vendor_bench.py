@@ -33,7 +33,9 @@ sys.path.insert(0, str(REPO / "src"))
 from mcp_defense_bench import BENCH_COMMIT, BENCH_VERSION  # noqa: E402
 from mcp_defense_bench.bench import CORPUS_DIRS, scored_case_files  # noqa: E402
 
-TOOLS = ("null-baseline", "mcp-bastion", "mcp-firewall", "pipelock")
+# Tools whose recorded JS results the parity tests replay. agentgateway and ToolHive are measured on
+# the authorization family only (meta.fixtureTypes), so they have dev results but no benign run.
+TOOLS = ("null-baseline", "mcp-bastion", "mcp-firewall", "pipelock", "agentgateway", "toolhive")
 
 
 def git(bench: Path, *args: str) -> bytes:
@@ -117,8 +119,9 @@ def main() -> None:
             (fx / sub).mkdir(parents=True)
         for t in TOOLS:
             shutil.copy2(src / f"results/{t}.json", fx / f"results/{t}.json")
-            shutil.copy2(src / f"results/benign/{t}.json", fx / f"results/benign/{t}.json")
             shutil.copy2(src / f"adapters/{t}/coverage.json", fx / f"coverage/{t}.json")
+            if (src / f"results/benign/{t}.json").is_file():
+                shutil.copy2(src / f"results/benign/{t}.json", fx / f"results/benign/{t}.json")
         board = subprocess.run(["node", "bin/leaderboard.mjs"], cwd=src, check=True, capture_output=True).stdout
         (fx / "LEADERBOARD.md").write_bytes(board)
         same = board == (src / "docs/LEADERBOARD.md").read_bytes()

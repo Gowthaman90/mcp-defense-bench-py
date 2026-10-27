@@ -1,4 +1,4 @@
-"""The scorer: a line-faithful port of ``bin/run.mjs`` (bench 0.9.0).
+"""The scorer: a line-faithful port of ``bin/run.mjs`` (bench 0.10.0).
 
 Matched corpora (dev, held-out): each case is assessed twice, on the malicious ``fixture`` and on
 its ``benignControl``. Per case:
@@ -34,8 +34,10 @@ __all__ = [
     "level_from",
     "score_benign",
     "score_matched",
+    "unwired_counts",
     "vector_metrics",
     "wilson",
+    "wired",
 ]
 
 WEIGHT: dict[str, float] = {"enforce": 1, "detect": 0.5, "observe": 0.1, "none": 0, "unknown": 0}
@@ -74,11 +76,30 @@ def cap_level(level: str, tc: Mapping[str, Any]) -> str:
 
 
 def wired(meta: Mapping[str, Any], tc: Mapping[str, Any]) -> bool:
-    """An adapter that declares ``fixtureTypes`` is not run on other cases (they stay unknown)."""
+    """Whether the adapter is run on ``tc`` at all (``wired`` in ``bin/run.mjs``).
+
+    An adapter that declares the fixture types it is wired for (``fixtureTypes``), or the ones it is
+    not yet wired for (``unwiredFixtureTypes``), is not run on other cases: their vectors stay
+    ``unknown`` (scored 0, never a miss) and they are left out of the benign-corpus denominator.
+    """
     types = meta.get("fixtureTypes")
+    unwired = meta.get("unwiredFixtureTypes")
     fixture = tc.get("fixture")
     ftype = fixture.get("type") if isinstance(fixture, Mapping) else None
-    return not isinstance(types, (list, tuple)) or ftype in types
+    return (not isinstance(types, (list, tuple)) or ftype in types) and not (
+        isinstance(unwired, (list, tuple)) and ftype in unwired
+    )
+
+
+def unwired_counts(meta: Mapping[str, Any], cases: Sequence[Mapping[str, Any]]) -> dict[str, int]:
+    """Fixture type -> number of ``cases`` the adapter is not run on, in corpus order."""
+    out: dict[str, int] = {}
+    for tc in cases:
+        if not wired(meta, tc):
+            fixture = tc.get("fixture")
+            ftype = str(fixture.get("type")) if isinstance(fixture, Mapping) else "?"
+            out[ftype] = out.get(ftype, 0) + 1
+    return out
 
 
 def vector_metrics(fx: Sequence[Mapping[str, Any]]) -> dict[str, Any]:

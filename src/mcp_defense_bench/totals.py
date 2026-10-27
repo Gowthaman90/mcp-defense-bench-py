@@ -4,7 +4,8 @@ A coverage number is only meaningful relative to its denominator, so the leaderb
 
 * **published vs all**: the vectors published before the newest family (no ``vectorFamily``)
   and all rubric vectors;
-* **per family**: each ``vectorFamily`` (0.9.0 adds ``delegation``, 5 vectors);
+* **per family**: each ``vectorFamily`` (0.9.0 adds ``delegation``, 5 vectors; 0.10.0 adds
+  ``authorization``, 4 vectors);
 * **per protocol revision**: vectors whose ``appliesTo`` includes the revision, plus the vectors
   introduced by the latest revision only.
 

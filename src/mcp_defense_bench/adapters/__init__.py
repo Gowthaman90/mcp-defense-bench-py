@@ -3,13 +3,22 @@
 It is the Python form of ``adapters/CONTRACT.md`` in the bench. An adapter is any object with
 
 * ``meta`` — a mapping (or ``AdapterMeta``) with ``tool``, ``class``, ``reproducible`` and the
-  optional ``fixtureTypes`` (cases of other fixture types stay ``unknown``, never a miss);
+  optional ``fixtureTypes`` (the fixture types it is wired for) or ``unwiredFixtureTypes`` (the ones
+  it is not wired for yet). Cases it is not wired for are not run: their vectors stay ``unknown``,
+  never a miss, and they do not count toward the benign-corpus denominator;
 * ``assess(input, testcase)`` — called twice per matched case (malicious ``fixture``, then
   ``benignControl``) and once per benign-corpus item. Returns a ``Verdict`` or a mapping with
   ``detect``, ``enforce`` and an optional ``signal``. It may be ``async``.
 
 The integrity rule is the bench's: report only what the defence actually inspects at runtime,
 never what its rules *could* catch if pointed at data it never sees.
+
+``authorized-call`` fixtures (the authorization family, bench 0.10.0) state a deployment ``policy``,
+an already-authenticated ``caller`` (``client``, ``user``, ``agent``) and one ``tools/call``
+``request``. An adapter translates the policy into the defence's own policy language and maps the
+caller to credentials the defence verifies natively; a rule it cannot express is a miss with the
+reason in ``signal``, never approximated. ``enforce`` means the call was refused before any
+upstream contact. This package scores such an adapter; it does not evaluate policies itself.
 """
 
 from __future__ import annotations
@@ -47,11 +56,14 @@ class AdapterMeta:
     reproducible: bool = False
     fixture_types: tuple[str, ...] | None = None
     extra: Mapping[str, Any] = field(default_factory=dict)
+    unwired_fixture_types: tuple[str, ...] | None = None
 
     def to_dict(self) -> dict[str, Any]:
         d: dict[str, Any] = {"tool": self.tool, "class": self.class_, "reproducible": self.reproducible}
         if self.fixture_types is not None:
             d["fixtureTypes"] = list(self.fixture_types)
+        if self.unwired_fixture_types is not None:
+            d["unwiredFixtureTypes"] = list(self.unwired_fixture_types)
         d.update(self.extra)
         return d
 

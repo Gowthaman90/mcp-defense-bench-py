@@ -53,7 +53,7 @@ def test_bad_specs():
 
 def test_async_adapter_and_verdict_object_run(guard_module):
     s = run("fake_guard:Guard")["summary"]
-    assert s["tool"] == "fake-guard" and s["casesRun"] == 66
+    assert s["tool"] == "fake-guard" and s["casesRun"] == 78
 
 
 def test_null_baseline_object_passes_through():
