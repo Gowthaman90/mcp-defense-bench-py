@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.3.0 — unreleased
+## 0.3.0 — 2026-10-29
 
 Scores against mcp-defense-bench **0.10.0** (tag `v0.10.0`, commit `8f08125`, DOI
 10.5281/zenodo.23712070), which adds a pre-registered runtime-authorization family.
